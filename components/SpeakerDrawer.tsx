@@ -22,25 +22,26 @@ export default function SpeakerDrawer() {
 
   const isActive = !!speakerId
 
-  const [mounted,     setMounted]     = useState(false)
-  const [open,        setOpen]        = useState(false)
-  const [currentSlug, setCurrentSlug] = useState(speakerId)
+  const [mounted,      setMounted]      = useState(false)
+  const [open,         setOpen]         = useState(false)
+  const [currentSlug,  setCurrentSlug]  = useState(speakerId)
+  const [contentPhase, setContentPhase] = useState<'idle' | 'out' | 'in'>('idle')
+  const isOpenRef = useRef(false)
 
   const handleClose = useCallback(() => {
     router.push('/', { scroll: false })
   }, [router])
 
   const handleBack = useCallback(() => {
-    if (isSideBySide) {
-      router.push('/?panel=agenda', { scroll: false })
-    } else {
-      router.back()
-    }
-  }, [isSideBySide, router])
+    router.back()
+  }, [router])
 
+  // Sync open state to ref so the speakerId effect can read it without being in deps
+  useEffect(() => { isOpenRef.current = open }, [open])
+
+  // Handle drawer open / close
   useEffect(() => {
     if (isActive) {
-      setCurrentSlug(speakerId)
       setMounted(true)
       const id = requestAnimationFrame(() => requestAnimationFrame(() => setOpen(true)))
       document.body.style.overflow = 'hidden'
@@ -51,7 +52,25 @@ export default function SpeakerDrawer() {
       const t = setTimeout(() => setMounted(false), 350)
       return () => clearTimeout(t)
     }
-  }, [isActive, speakerId])
+  }, [isActive])
+
+  // Handle speaker change — immediate on first open, animated while already open
+  useEffect(() => {
+    if (!speakerId) return
+    if (!isOpenRef.current) {
+      setCurrentSlug(speakerId)
+      return
+    }
+    // Drawer already open: slide current content out, swap slug, slide new content in
+    setContentPhase('out')
+    const t = setTimeout(() => {
+      setCurrentSlug(speakerId)
+      setContentPhase('in')
+      requestAnimationFrame(() => requestAnimationFrame(() => setContentPhase('idle')))
+    }, 160)
+    return () => clearTimeout(t)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [speakerId])
 
   useEffect(() => () => { document.body.style.overflow = '' }, [])
 
@@ -73,23 +92,21 @@ export default function SpeakerDrawer() {
 
   const bioParagraphs = profile.bio ? profile.bio.split('\n\n') : []
 
-  // Animation: standalone slides in from right; side-by-side slides in from left on desktop
-  const closedTranslate = isSideBySide
-    ? 'translate-x-full md:-translate-x-full'
-    : 'translate-x-full'
-
+  // In side-by-side mode the speaker slides out from behind the agenda (translate right → 0)
+  // Lower z-index so the agenda panel sits on top
   return (
     <>
-      {/* Backdrop — shown standalone always; hidden on desktop in side-by-side (agenda has its own) */}
-      <div
-        aria-hidden="true"
-        onClick={handleClose}
-        className={[
-          'fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm transition-opacity duration-300',
-          isSideBySide ? 'md:hidden' : '',
-          open ? 'opacity-100' : 'opacity-0 pointer-events-none',
-        ].join(' ')}
-      />
+      {/* Backdrop — standalone only; agenda has its own in side-by-side */}
+      {!isSideBySide && (
+        <div
+          aria-hidden="true"
+          onClick={handleClose}
+          className={[
+            'fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm transition-opacity duration-300',
+            open ? 'opacity-100' : 'opacity-0 pointer-events-none',
+          ].join(' ')}
+        />
+      )}
 
       {/* Panel */}
       <div
@@ -99,43 +116,52 @@ export default function SpeakerDrawer() {
         aria-modal="true"
         aria-labelledby="speaker-drawer-name"
         className={[
-          'fixed inset-y-0 flex flex-col w-full bg-[#1E1E1E] outline-none transition-transform duration-300 ease-out',
-          // Positioning: standalone → right-0; side-by-side → right-0 mobile, right-[36rem] desktop
+          'fixed inset-y-0 flex flex-col w-full outline-none transition-transform duration-300 ease-out',
           isSideBySide
-            ? 'right-0 md:right-[36rem] md:max-w-xs z-[110]'
-            : 'right-0 md:max-w-sm z-[130]',
-          open ? 'translate-x-0' : closedTranslate,
+            ? 'right-0 md:right-[36rem] md:max-w-xs z-[105] bg-[#161616]'
+            : 'right-0 md:max-w-sm z-[130] bg-[#1E1E1E]',
+          open ? 'translate-x-0' : 'translate-x-full',
         ].join(' ')}
       >
-        {/* Header */}
-        <div
-          className="flex items-center justify-between px-6 border-b border-white/10 flex-shrink-0"
-          style={{ height: '56px' }}
-        >
-          <button
-            onClick={handleBack}
-            className="flex items-center gap-2 text-white/40 hover:text-white transition-colors"
-            aria-label="Back"
-            style={{ fontSize: '13px' }}
+        {/* Header — standalone only */}
+        {!isSideBySide && (
+          <div
+            className="flex items-center justify-between px-6 border-b border-white/10 flex-shrink-0"
+            style={{ height: '56px' }}
           >
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-            </svg>
-            Back
-          </button>
-          <button
-            onClick={handleClose}
-            aria-label="Close"
-            className="text-white/40 hover:text-white transition-colors p-1 -mr-1"
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </button>
-        </div>
+            <button
+              onClick={handleBack}
+              className="flex items-center gap-2 text-white/40 hover:text-white transition-colors"
+              aria-label="Back"
+              style={{ fontSize: '13px' }}
+            >
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+              </svg>
+              Back
+            </button>
+            <button
+              onClick={handleClose}
+              aria-label="Close"
+              className="text-white/40 hover:text-white transition-colors p-1 -mr-1"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
+        )}
 
         {/* Scrollable content */}
-        <div className="flex-1 overflow-y-auto px-6 py-8">
+        <div
+          className={[
+            'flex-1 overflow-y-auto px-6 transition-[opacity,transform] duration-[160ms] ease-out',
+            isSideBySide ? 'pt-[72px] pb-8' : 'py-8',
+            contentPhase === 'out' ? 'opacity-0 translate-x-3'  : '',
+            contentPhase === 'in'  ? 'opacity-0 -translate-x-3' : '',
+            contentPhase === 'idle' ? 'opacity-100 translate-x-0' : '',
+          ].join(' ')}
+        >
           {/* Portrait image */}
           {profile.image && (
             <div
