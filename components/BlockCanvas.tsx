@@ -3,34 +3,77 @@
 import { useEffect, useRef } from 'react'
 import type { CSSProperties } from 'react'
 
-// Weighted: green 40%, white 30%, gold 20%, black 10%
-const COLORS = [
-  '#00A432', '#00A432', '#00A432', '#00A432',
-  '#ffffff', '#ffffff', '#ffffff', '#ffffff',
-  '#8D844E', '#8D844E',
-  '#1E1E1E',
-]
-type Dir = 'top' | 'bottom' | 'left' | 'right'
+// ─── Colours ──────────────────────────────────────────────────────────────────
+const GREEN  = '#00A432'
+const GOLD   = '#8D844E'
+const BLACK  = '#1E1E1E'
+const WHITE  = '#ffffff'
 
+// ─── Layout variants ─────────────────────────────────────────────────────────
+// Each block: [xFrac, yFrac, wFrac, hFrac, color]
+// All values are fractions of canvas width/height (0–1).
+
+type BlockDef = [number, number, number, number, string]
+type Variant = BlockDef[]
+
+const VARIANTS: Variant[] = [
+  // ── Variant 1 — from the design reference (1512×453 SVG) ─────────────────
+  [
+    [0,      0,      0.2096, 0.3333, GOLD],
+    [0.4444, 0,      0.2633, 0.3333, GOLD],
+    [0.9113, 0,      0.0887, 0.3333, GREEN],
+    [0.0998, 0.3333, 0.3447, 0.3333, GREEN],
+    [0.7079, 0.3333, 0.2924, 0.3333, GREEN],
+    [0,      0.6667, 0.0998, 0.3333, BLACK],
+    [0.2804, 0.6667, 0.2639, 0.3333, GREEN],
+  ],
+  // ── Variant 2 ─────────────────────────────────────────────────────────────
+  [
+    [0,      0,      0.1984, 0.3333, GOLD],
+    [0.3175, 0,      0.2646, 0.3333, WHITE],
+    [0.6614, 0,      0.1984, 0.3333, GREEN],
+    [0.0992, 0.3333, 0.3307, 0.3333, GREEN],
+    [0.5039, 0.3333, 0.0992, 0.3333, BLACK],
+    [0.6614, 0.3333, 0.2646, 0.3333, WHITE],
+    [0,      0.6667, 0.0992, 0.3333, WHITE],
+    [0.1984, 0.6667, 0.2646, 0.3333, GREEN],
+    [0.5291, 0.6667, 0.1984, 0.3333, GOLD],
+    [0.7937, 0.6667, 0.0992, 0.3333, GREEN],
+  ],
+]
+
+// ─── Easing ───────────────────────────────────────────────────────────────────
+const easeOutQuart = (x: number) => 1 - Math.pow(1 - x, 4)
+
+// ─── Rendered block (resolved to pixels) ─────────────────────────────────────
 interface Block {
-  c: number; r: number
-  cw: number; rh: number
+  x: number; y: number; w: number; h: number
   color: string
-  from: Dir
+  from: 'top' | 'bottom' | 'left' | 'right'
   delay: number
   duration: number
 }
 
-const easeOutQuart = (x: number) => 1 - Math.pow(1 - x, 4)
-
-interface Props {
-  rows?: number
-  density?: number
-  className?: string
-  style?: CSSProperties
+function buildBlocks(variant: Variant, W: number, H: number): Block[] {
+  return variant.map(([xf, yf, wf, hf, color]) => {
+    const x = xf * W, y = yf * H
+    const w = wf * W, h = hf * H
+    const cx = x + w / 2, cy = y + h / 2
+    const distL = cx, distR = W - cx, distT = cy, distB = H - cy
+    const min = Math.min(distL, distR, distT, distB)
+    const from = min === distL ? 'left' : min === distR ? 'right' : min === distT ? 'top' : 'bottom'
+    return {
+      x, y, w, h, color, from,
+      delay:    (x / W) * 600 + Math.random() * 150,
+      duration: 500 + Math.random() * 200,
+    }
+  })
 }
 
-export default function BlockCanvas({ rows = 4, density = 0.58, className, style }: Props) {
+// ─── Component ────────────────────────────────────────────────────────────────
+interface Props { className?: string; style?: CSSProperties }
+
+export default function BlockCanvas({ className, style }: Props) {
   const wrapRef   = useRef<HTMLDivElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
@@ -40,155 +83,74 @@ export default function BlockCanvas({ rows = 4, density = 0.58, className, style
     const ctx    = canvas.getContext('2d')!
 
     let raf = 0
-    let start = 0
+    let W = 0, H = 0
     let blocks: Block[] = []
-    let w = 0, h = 0, cw = 0
     let hasTriggered = false
 
-    // ── Build a fresh random layout ──────────────────────────────────────────
-    const generate = () => {
+    const setup = () => {
       const dpr  = Math.min(window.devicePixelRatio || 1, 2)
       const rect = wrap.getBoundingClientRect()
-      w = rect.width
-      h = rect.height
-      if (w === 0 || h === 0) return
+      W = rect.width; H = rect.height
+      if (W === 0 || H === 0) return
 
-      canvas.width  = Math.round(w * dpr)
-      canvas.height = Math.round(h * dpr)
-      canvas.style.width  = `${w}px`
-      canvas.style.height = `${h}px`
+      canvas.width  = Math.round(W * dpr)
+      canvas.height = Math.round(H * dpr)
+      canvas.style.width  = `${W}px`
+      canvas.style.height = `${H}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
 
-      cw = h / rows
-      const cols = Math.ceil(w / cw)
-
-      const occ = new Array(cols * rows).fill(false)
-      const idx = (c: number, r: number) => r * cols + c
-
-      // shuffled list of candidate cells
-      const cells: [number, number][] = []
-      for (let r = 0; r < rows; r++)
-        for (let c = 0; c < cols; c++)
-          cells.push([c, r])
-      for (let i = cells.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [cells[i], cells[j]] = [cells[j], cells[i]]
-      }
-
-      const canFit = (c: number, r: number, bw: number, bh: number) => {
-        if (c + bw > cols || r + bh > rows) return false
-        for (let rr = 0; rr < bh; rr++)
-          for (let cc = 0; cc < bw; cc++)
-            if (occ[idx(c + cc, r + rr)]) return false
-        return true
-      }
-
-      const target = Math.floor(cols * rows * density)
-      const newBlocks: Block[] = []
-      let filled = 0
-      const dirs: Dir[] = ['top', 'bottom', 'left', 'right']
-
-      for (const [c, r] of cells) {
-        if (filled >= target) break
-        if (occ[idx(c, r)]) continue
-
-        const roll = Math.random()
-        let bw = 1, bh = 1
-        const mobile = w < 640
-        if (mobile) {
-          // tall over wide on mobile
-          if      (roll < 0.25 && canFit(c, r, 1, 2)) { bw = 1; bh = 2 }
-          else if (roll < 0.40 && canFit(c, r, 2, 2)) { bw = 2; bh = 2 }
-          else if (roll < 0.52 && canFit(c, r, 2, 1)) { bw = 2; bh = 1 }
-          else if (roll < 0.60 && canFit(c, r, 3, 1)) { bw = 3; bh = 1 }
-        } else {
-          // wide over tall on desktop
-          if      (roll < 0.15 && canFit(c, r, 4, 1)) { bw = 4; bh = 1 }
-          else if (roll < 0.37 && canFit(c, r, 3, 1)) { bw = 3; bh = 1 }
-          else if (roll < 0.60 && canFit(c, r, 2, 1)) { bw = 2; bh = 1 }
-          else if (roll < 0.68 && canFit(c, r, 1, 2)) { bw = 1; bh = 2 }
-          else if (roll < 0.75 && canFit(c, r, 2, 2)) { bw = 2; bh = 2 }
-        }
-
-        for (let rr = 0; rr < bh; rr++)
-          for (let cc = 0; cc < bw; cc++)
-            occ[idx(c + cc, r + rr)] = true
-        filled += bw * bh
-
-        newBlocks.push({
-          c, r, cw: bw, rh: bh,
-          color: COLORS[Math.floor(Math.random() * COLORS.length)],
-          from: dirs[Math.floor(Math.random() * 4)],
-          delay:    Math.random() * 1200,
-          duration: 500 + Math.random() * 300,
-        })
-      }
-
-      blocks = newBlocks
+      const variant = VARIANTS[Math.floor(Math.random() * VARIANTS.length)]
+      blocks = buildBlocks(variant, W, H)
     }
 
-    // ── Draw one frame ───────────────────────────────────────────────────────
-    const drawFrame = (now: number) => {
-      const t = now - start
-      ctx.clearRect(0, 0, w, h)
+    const drawFrame = (t: number) => {
+      ctx.clearRect(0, 0, W, H)
       let active = false
 
       for (const b of blocks) {
         const localT = (t - b.delay) / b.duration
         if (localT <= 0) { active = true; continue }
         const p = localT >= 1 ? 1 : (active = true, easeOutQuart(localT))
-
-        const x = b.c * cw,  y = b.r * cw
-        const bw = b.cw * cw, bh = b.rh * cw
-        const off = 1 - p
-        let dx = 0, dy = 0
-        if      (b.from === 'top')    dy = -bh * off
-        else if (b.from === 'bottom') dy =  bh * off
-        else if (b.from === 'left')   dx = -bw * off
-        else                          dx =  bw * off
+        const clipW = b.w * p, clipH = b.h * p
 
         ctx.save()
         ctx.beginPath()
-        ctx.rect(x, y, bw, bh)
+        if (b.from === 'left')        ctx.rect(b.x,               b.y, clipW, b.h)
+        else if (b.from === 'right')  ctx.rect(b.x + b.w - clipW, b.y, clipW, b.h)
+        else if (b.from === 'top')    ctx.rect(b.x, b.y,               b.w, clipH)
+        else                          ctx.rect(b.x, b.y + b.h - clipH, b.w, clipH)
         ctx.clip()
         ctx.fillStyle = b.color
-        ctx.fillRect(x + dx, y + dy, bw, bh)
+        ctx.fillRect(b.x, b.y, b.w, b.h)
         ctx.restore()
       }
 
       const maxEnd = blocks.reduce((m, b) => Math.max(m, b.delay + b.duration), 0)
-      if (active || t < maxEnd) raf = requestAnimationFrame(drawFrame)
+      if (active || t < maxEnd) raf = requestAnimationFrame(n => drawFrame(n - start))
     }
 
-    // ── Kick off ─────────────────────────────────────────────────────────────
+    let start = 0
     const play = () => {
-      generate()
-      start = performance.now()
       cancelAnimationFrame(raf)
-      raf = requestAnimationFrame(drawFrame)
+      start = performance.now()
+      raf = requestAnimationFrame(n => drawFrame(n - start))
     }
 
-    generate() // size + generate without playing
+    setup()
 
-    // Trigger once on scroll into view
     const io = new IntersectionObserver(([entry]) => {
       if (entry.isIntersecting && !hasTriggered) {
         hasTriggered = true
-        start = performance.now()
-        cancelAnimationFrame(raf)
-        raf = requestAnimationFrame(drawFrame)
+        play()
         io.disconnect()
       }
     }, { threshold: 0.05 })
     io.observe(wrap)
 
-    // Hover disabled — animation plays once only
-
-    // Resize: regenerate (replay if already triggered)
     const ro = new ResizeObserver(() => {
       cancelAnimationFrame(raf)
+      setup()
       if (hasTriggered) play()
-      else generate()
     })
     ro.observe(wrap)
 
@@ -197,7 +159,7 @@ export default function BlockCanvas({ rows = 4, density = 0.58, className, style
       ro.disconnect()
       cancelAnimationFrame(raf)
     }
-  }, [rows, density])
+  }, [])
 
   return (
     <div

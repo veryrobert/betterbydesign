@@ -1,12 +1,24 @@
 import Image from 'next/image'
-import { panellists, panellistsIntro, event, type Panellist } from '@/content/site'
+import Link from 'next/link'
+import { panellists, panellistsIntro, speakerProfiles, type Panellist } from '@/content/site'
 
-function PanellistCard({ name, role, organisation, image }: Panellist) {
+function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
+  const hasBio = !!speakerProfiles[slug]?.bio
+  const Wrapper = hasBio
+    ? ({ children }: { children: React.ReactNode }) => (
+        <Link href={`/?panel=speaker&id=${slug}`} scroll={false} className="group flex flex-col">
+          {children}
+        </Link>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <article className="flex flex-col">{children}</article>
+      )
+
   return (
-    <article className="flex flex-col">
+    <Wrapper>
       {/* Portrait image — 550×800 ratio */}
       <div
-        className="overflow-hidden mb-4 flex-shrink-0"
+        className="overflow-hidden mb-4 flex-shrink-0 transition-opacity duration-200 group-hover:opacity-80"
         style={{ width: '70%', aspectRatio: '550 / 800', backgroundColor: '#EEECEA' }}
       >
         {image ? (
@@ -32,7 +44,7 @@ function PanellistCard({ name, role, organisation, image }: Panellist) {
       <p className="text-bbd-black text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
         {organisation}
       </p>
-    </article>
+    </Wrapper>
   )
 }
 
@@ -45,7 +57,7 @@ export default function Panellists() {
     >
       <div className="page-grid items-start">
         {/* Left: intro — sticks while grid scrolls */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-3" style={{ position: 'sticky', top: '76px', alignSelf: 'start' }}>
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 lg:sticky" style={{ top: '76px', alignSelf: 'start' }}>
           <h2
             id="panellists-heading"
             className="font-semibold text-bbd-black leading-none"
@@ -59,14 +71,14 @@ export default function Panellists() {
           >
             {panellistsIntro}
           </p>
-          <a
-            href={event.agendaUrl}
+          <Link
+            href="/?panel=agenda"
+            scroll={false}
             className="group inline-flex items-center gap-2 mt-6 underline decoration-1 underline-offset-[0.15em] hover:decoration-2 transition-all duration-200 ease-out text-bbd-black"
             style={{ fontSize: '18px' }}
-            {...(event.agendaUrl !== '#' ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
           >
-            Download Agenda
-          </a>
+            View Agenda
+          </Link>
         </div>
 
         {/* Right: grid */}

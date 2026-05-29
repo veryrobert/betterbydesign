@@ -62,7 +62,7 @@ export default function Themes() {
         {/* Left: title sticks, action plan link pinned to bottom */}
         <div className="col-span-1 md:col-span-2 lg:col-span-3 flex flex-col">
           <div className="flex-1">
-            <div style={{ position: 'sticky', top: '76px' }}>
+            <div className="lg:sticky" style={{ top: '76px' }}>
               <h2
                 id="themes-heading"
                 className="font-semibold text-bbd-black leading-none"

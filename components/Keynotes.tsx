@@ -1,15 +1,26 @@
 'use client'
 
 import Image from 'next/image'
+import Link from 'next/link'
 import { useEffect, useRef } from 'react'
-import { keynotes, type Keynote } from '@/content/site'
+import { keynotes, speakerProfiles, type Keynote } from '@/content/site'
 
-function KeynoteCard({ name, role, organisation, image }: Keynote) {
+function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
+  const hasBio = !!speakerProfiles[slug]?.bio
+  const Wrapper = hasBio
+    ? ({ children }: { children: React.ReactNode }) => (
+        <Link href={`/?panel=speaker&id=${slug}`} scroll={false} className="group flex flex-col">
+          {children}
+        </Link>
+      )
+    : ({ children }: { children: React.ReactNode }) => (
+        <article className="flex flex-col">{children}</article>
+      )
+
   return (
-    <article className="flex flex-col">
-      {/* Image — olive duotone treatment */}
+    <Wrapper>
       <div
-        className="w-full overflow-hidden mb-5 flex-shrink-0"
+        className="w-full overflow-hidden mb-5 flex-shrink-0 transition-opacity duration-200 group-hover:opacity-80"
         style={{ aspectRatio: '4 / 5', backgroundColor: '#4a4530' }}
       >
         {image ? (
@@ -26,7 +37,6 @@ function KeynoteCard({ name, role, organisation, image }: Keynote) {
         )}
       </div>
 
-      {/* Meta */}
       <p className="font-semibold leading-snug text-white" style={{ fontSize: '24px' }}>
         {name}
       </p>
@@ -36,7 +46,7 @@ function KeynoteCard({ name, role, organisation, image }: Keynote) {
       <p className="text-white text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
         {organisation}
       </p>
-    </article>
+    </Wrapper>
   )
 }
 
@@ -77,8 +87,8 @@ export default function Keynotes() {
       aria-labelledby="keynotes-heading"
     >
       <div className="page-grid items-start">
-        {/* Left: heading — sticks alongside the cards */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-3" style={{ position: 'sticky', top: '76px' }}>
+        {/* Left: heading — sticks alongside the cards on desktop */}
+        <div className="col-span-1 md:col-span-2 lg:col-span-3 lg:sticky" style={{ top: '76px' }}>
           <h2
             id="keynotes-heading"
             className="font-semibold text-white leading-none"
@@ -98,7 +108,8 @@ export default function Keynotes() {
             {keynotes.map((keynote) => (
               <li
                 key={keynote.id}
-                style={{ position: 'sticky', top: '76px' }}
+                className="lg:sticky"
+                style={{ top: '76px' }}
               >
                 <KeynoteCard {...keynote} />
               </li>
