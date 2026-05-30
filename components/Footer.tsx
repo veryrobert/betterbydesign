@@ -41,8 +41,8 @@ export default function Footer() {
     <footer className="bg-white text-bbd-black" role="contentinfo">
 
       {/* Non-flush black rule */}
-      <div className="page-x" style={{ paddingTop: '96px', paddingBottom: '32px' }}>
-        <div style={{ borderTop: '1px solid #0A0A0A' }} />
+      <div className="page-x pt-24">
+        <div className="border-t border-bbd-black" />
       </div>
 
       {/* Top row — description + social */}
@@ -108,7 +108,7 @@ export default function Footer() {
       </div>
 
       {/* Bottom row — large logotype left, partner logos bottom-right */}
-      <div className="page-x pt-12 md:pt-24 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8" style={{ paddingBottom: '1rem' }}>
+      <div className="page-x pt-12 md:pt-24 pb-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-8">
         <FluidContainer style={{ minWidth: 0, flex: '1 1 auto' }}>
           <p className="fluid-display text-bbd-black leading-none">{event.name}</p>
           <p className="fluid-display-light text-bbd-black leading-none" style={{ marginBottom: '-0.18em' }}>{event.year}</p>

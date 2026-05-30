@@ -36,9 +36,8 @@ function MinisterCard({ slug, name, role, organisation, image }: Minister) {
             />
             {/* Gold tint overlay using multiply blend */}
             <div
-              className="absolute inset-0"
+              className="absolute inset-0 bg-[#c49a28] mix-blend-multiply opacity-55"
               aria-hidden="true"
-              style={{ backgroundColor: '#c49a28', mixBlendMode: 'multiply', opacity: 0.55 }}
             />
           </>
         ) : (
