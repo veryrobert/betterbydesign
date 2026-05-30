@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     type: 'website',
     images: [
       {
-        url: '/images/betterbydesign-sharecard.png',
+        url: 'images/betterbydesign-sharecard.png',
         width: 1200,
         height: 630,
         alt: 'Better By Design 2026',
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     title: 'Better By Design 2026',
     description:
       'A one-day conference bringing together public servants, designers, and policy makers. 26 June 2026 — The Lighthouse, Dublin.',
-    images: ['/images/betterbydesign-sharecard.png'],
+    images: ['images/betterbydesign-sharecard.png'],
   },
 }
 

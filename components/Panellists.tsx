@@ -39,10 +39,7 @@ function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
         {name}
       </p>
       <p className="mt-1 text-bbd-black text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
-        {role}
-      </p>
-      <p className="text-bbd-black text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
-        {organisation}
+        {role}{organisation ? `, ${organisation}` : ''}
       </p>
     </Wrapper>
   )

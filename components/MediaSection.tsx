@@ -11,7 +11,7 @@ export default function MediaSection() {
         aria-label="Conference media — placeholder"
       >
         {/* Replace with:
-            <img src="/images/conference-photo.jpg" alt="..." className="w-full h-full object-cover" />
+            <img src="images/conference-photo.jpg" alt="..." className="w-full h-full object-cover" />
             or
             <video src="/video/highlight.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
         */}

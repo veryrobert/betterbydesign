@@ -41,10 +41,7 @@ function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
         {name}
       </p>
       <p className="mt-1 text-white text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
-        {role}
-      </p>
-      <p className="text-white text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
-        {organisation}
+        {role}{organisation ? `, ${organisation}` : ''}
       </p>
     </Wrapper>
   )

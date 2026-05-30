@@ -191,7 +191,7 @@ export default function SpeakerDrawer() {
           {/* Role + org */}
           <p className="mt-1 text-white/70 leading-snug" style={{ fontSize: '13px' }}>
             {profile.role}
-            {profile.organisation ? ` — ${profile.organisation}` : ''}
+            {profile.organisation ? `, ${profile.organisation}` : ''}
           </p>
 
           {/* Bio */}

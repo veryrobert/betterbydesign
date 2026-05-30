@@ -26,9 +26,9 @@ function ThemeItem({ number, title, subtitle }: Theme) {
     <article className="flex gap-6">
       {/* Hanging number */}
       <span
-        className="flex-shrink-0 font-semibold leading-none text-bbd-black select-none"
+        className="flex-shrink-0 font-semibold leading-none text-bbd-black select-none sm:-ml-6"
         aria-hidden="true"
-        style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)', marginLeft: '-1.5rem' }}
+        style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
       >
         {number}
       </span>
