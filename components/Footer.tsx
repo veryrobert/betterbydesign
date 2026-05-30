@@ -38,7 +38,12 @@ const iconMap = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-bbd-black border-t border-bbd-black/10" role="contentinfo">
+    <footer className="bg-white text-bbd-black" role="contentinfo">
+
+      {/* Non-flush black rule */}
+      <div className="page-x" style={{ paddingTop: '96px', paddingBottom: '32px' }}>
+        <div style={{ borderTop: '1px solid #0A0A0A' }} />
+      </div>
 
       {/* Top row — description + social */}
       <div className="section-y page-grid items-start">
@@ -111,15 +116,23 @@ export default function Footer() {
 
         <div className="self-end flex flex-wrap items-end gap-6">
           {partnerLogos.map((logo) => (
-            <Image
+            <a
               key={logo.src}
-              src={logo.src}
-              alt={logo.alt}
-              width={200}
-              height={40}
-              className="w-auto object-contain"
-              style={{ maxHeight: '3rem', maxWidth: '200px', width: 'auto' }}
-            />
+              href={logo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={logo.alt}
+              className="opacity-100 hover:opacity-40 transition-opacity duration-200"
+            >
+              <Image
+                src={logo.src}
+                alt={logo.alt}
+                width={200}
+                height={40}
+                className="w-auto object-contain"
+                style={{ maxHeight: '3rem', maxWidth: '200px', width: 'auto' }}
+              />
+            </a>
           ))}
         </div>
       </div>

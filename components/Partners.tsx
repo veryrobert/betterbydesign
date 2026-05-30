@@ -19,7 +19,7 @@ export default function Partners() {
           >
             {partners.body}
           </p>
-          <div className="mt-16 flex flex-wrap sm:flex-nowrap items-center gap-8 sm:gap-6">
+          <div className="mt-48 flex flex-wrap sm:flex-nowrap items-center gap-8 sm:gap-6">
             {partnerLogos.map((logo) => (
               <a
                 key={logo.src}
@@ -34,7 +34,7 @@ export default function Partners() {
                   alt={logo.alt}
                   width={160}
                   height={40}
-                  className="w-auto object-contain transition-opacity duration-200 group-hover:opacity-60"
+                  className="w-auto object-contain transition-opacity duration-200 group-hover:opacity-40"
                   style={{ maxHeight: '2.5rem', maxWidth: '160px', width: 'auto' }}
                 />
               </a>

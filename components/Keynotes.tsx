@@ -61,18 +61,21 @@ export default function Keynotes() {
       const items = Array.from(list.querySelectorAll<HTMLLIElement>('li'))
       if (!items.length) return
 
-      // Mobile: single column, no offset needed
-      if (window.innerWidth < 640) {
-        items.forEach((item) => { item.style.marginTop = '' })
-        return
-      }
+      // Reset before measuring
+      items.forEach((item) => { item.style.height = ''; item.style.marginTop = '' })
 
-      // Offset each card by the cumulative height of all preceding cards
-      // so they scroll up and meet at the top regardless of individual card heights
+      if (window.innerWidth < 640) return
+
+      // Equalise all cards to the tallest
+      const maxH = Math.max(...items.map((item) => item.getBoundingClientRect().height))
+      items.forEach((item) => { item.style.height = `${maxH}px` })
+
+      // Offset each card by the preceding image-container heights only
       let cumulative = 0
       items.forEach((item, i) => {
         item.style.marginTop = i === 0 ? '' : `${cumulative}px`
-        cumulative += item.getBoundingClientRect().height
+        const imgBox = item.querySelector<HTMLElement>('div')
+        cumulative += imgBox ? imgBox.getBoundingClientRect().height : maxH
       })
     }
 

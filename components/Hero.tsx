@@ -63,7 +63,7 @@ export default function Hero() {
           </FluidContainer>
 
           {/* Tagline + Tickets — second on mobile; left col on tablet; left 3 cols on desktop */}
-          <div className="order-2 sm:col-start-1 sm:row-start-1 lg:col-span-3 lg:col-start-1 flex flex-col mt-4 sm:mt-0">
+          <div className="order-2 sm:col-start-1 sm:row-start-1 lg:col-span-3 lg:col-start-1 lg:row-span-2 flex flex-col mt-4 sm:mt-0">
             <p className="font-normal text-bbd-black leading-snug">
               {event.tagline}
               <br />
