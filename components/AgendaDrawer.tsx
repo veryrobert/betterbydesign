@@ -34,7 +34,7 @@ function SpeakerLink({ slug }: { slug: string }) {
       <span className={`block font-semibold text-white text-[14px] md:text-[16px] leading-snug${hasBio ? ' group-hover:text-[#00A432] transition-colors duration-150' : ''}`}>
         {profile.name}
       </span>
-      <span className="block text-white/40 text-[11px] md:text-[12px] leading-snug mt-0.5">
+      <span className={`block text-[11px] md:text-[12px] leading-snug mt-0.5 transition-colors duration-150 ${hasBio ? 'text-white/40 group-hover:text-white/60' : 'text-white/40'}`}>
         {profile.role}{profile.organisation ? `, ${profile.organisation}` : ''}
       </span>
     </>
@@ -60,8 +60,8 @@ function AgendaRow({ item }: { item: AgendaItem }) {
     <div className="flex gap-5 md:gap-8 py-6 border-b border-white/10 last:border-0">
       {/* Time */}
       <div
-        className="flex-shrink-0 text-white/30 tabular-nums"
-        style={{ fontSize: '13px', paddingTop: '3px', width: '42px' }}
+        className="flex-shrink-0 text-[#00A432] tabular-nums"
+        style={{ fontSize: '10px', fontWeight: 600, paddingTop: '3px', width: '42px' }}
       >
         {item.time}
       </div>
@@ -93,7 +93,7 @@ function AgendaRow({ item }: { item: AgendaItem }) {
             {/* Subtitle — same size, lighter weight */}
             {item.subtitle && (
               <div
-                className={`mt-0.5 ${isSimple ? 'text-white/30' : 'text-white/50'}`}
+                className={`mt-0.5 ${isSimple ? 'text-white/30' : 'text-white'}`}
                 style={{ fontSize: isPanel ? '18px' : '13px', fontWeight: 400 }}
               >
                 {item.subtitle}

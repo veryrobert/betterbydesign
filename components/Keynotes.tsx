@@ -67,11 +67,12 @@ export default function Keynotes() {
         return
       }
 
-      // Measure the first card and offset each subsequent card down by that height
-      // so they scroll up and meet at the top as you scroll through the section
-      const cardHeight = items[0].getBoundingClientRect().height
+      // Offset each card by the cumulative height of all preceding cards
+      // so they scroll up and meet at the top regardless of individual card heights
+      let cumulative = 0
       items.forEach((item, i) => {
-        item.style.marginTop = i === 0 ? '' : `${i * cardHeight}px`
+        item.style.marginTop = i === 0 ? '' : `${cumulative}px`
+        cumulative += item.getBoundingClientRect().height
       })
     }
 

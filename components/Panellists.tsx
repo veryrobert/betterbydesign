@@ -52,7 +52,7 @@ export default function Panellists() {
   return (
     <section
       id="panellists"
-      className="section-y pb-32 border-t border-bbd-black/10"
+      className="section-y pb-32"
       aria-labelledby="panellists-heading"
     >
       <div className="page-grid items-start">

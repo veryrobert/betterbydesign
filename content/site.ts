@@ -33,11 +33,11 @@ export const partners = {
 }
 
 export const partnerLogos = [
-  { src: '/images/gov-ireland.svg',            alt: 'Government of Ireland' },
-  { src: '/images/shared-island.svg',          alt: 'Shared Island Initiative' },
-  { src: '/images/creative-ireland.svg',       alt: 'Creative Ireland Programme' },
-  { src: '/images/better-public-services.svg', alt: 'Better Public Services' },
-  { src: '/images/idi-logo.svg',               alt: 'Institute of Designers Ireland' },
+  { src: '/images/gov-ireland.svg',            alt: 'Government of Ireland',          href: 'https://www.gov.ie' },
+  { src: '/images/shared-island.svg',          alt: 'Shared Island Initiative',       href: 'https://www.gov.ie/en/campaigns/shared-island/' },
+  { src: '/images/creative-ireland.svg',       alt: 'Creative Ireland Programme',     href: 'https://www.creativeireland.gov.ie' },
+  { src: '/images/better-public-services.svg', alt: 'Better Public Services',         href: 'https://www.gov.ie/en/campaigns/better-public-services/' },
+  { src: '/images/idi-logo.svg',               alt: 'Institute of Designers Ireland', href: 'https://www.idi.ie' },
 ]
 
 // ─── Speaker Profiles ─────────────────────────────────────────────────────────
@@ -74,21 +74,21 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Jack Chambers TD',
     role: 'Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
     organisation: '',
-    image: null,
+    image: '/images/jack-chambers.jpg',
   },
   'patrick-odonovan-td': {
     slug: 'patrick-odonovan-td',
     name: 'Patrick O\'Donovan TD',
     role: 'Minister for Culture, Communications and Sport',
     organisation: '',
-    image: null,
+    image: '/images/patrick-o-donovan.webp',
   },
   'frank-feighan-td': {
     slug: 'frank-feighan-td',
     name: 'Frank Feighan TD',
     role: 'Minister of State',
     organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: null,
+    image: '/images/frank-td.jpg',
   },
   'trevor-vaugh': {
     slug: 'trevor-vaugh',
@@ -395,7 +395,7 @@ export const ministers: Minister[] = [
     name: 'Jack Chambers TD',
     role: 'Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
     organisation: '',
-    image: null,
+    image: '/images/jack-chambers.jpg',
   },
   {
     id: 2,
@@ -403,7 +403,7 @@ export const ministers: Minister[] = [
     name: 'Patrick O\'Donovan TD',
     role: 'Minister for Culture, Communications and Sport',
     organisation: '',
-    image: null,
+    image: '/images/patrick-o-donovan.webp',
   },
   {
     id: 3,
@@ -411,7 +411,7 @@ export const ministers: Minister[] = [
     name: 'Frank Feighan TD',
     role: 'Minister of State',
     organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: null,
+    image: '/images/frank-td.jpg',
   },
 ]
 
@@ -428,7 +428,7 @@ export const themes: Theme[] = [
   {
     number: '1',
     title: 'Principles to Practice',
-    subtitle: 'Guidelines for Design Public Value',
+    subtitle: 'Guidelines for Designing for Public Value',
     description: '',
   },
   {

@@ -189,7 +189,7 @@ export default function SpeakerDrawer() {
           </h2>
 
           {/* Role + org */}
-          <p className="mt-1 text-white/50 leading-snug" style={{ fontSize: '13px' }}>
+          <p className="mt-1 text-white/70 leading-snug" style={{ fontSize: '13px' }}>
             {profile.role}
             {profile.organisation ? ` — ${profile.organisation}` : ''}
           </p>
@@ -198,7 +198,7 @@ export default function SpeakerDrawer() {
           {bioParagraphs.length > 0 && (
             <div className="mt-6 flex flex-col gap-4">
               {bioParagraphs.map((para, i) => (
-                <p key={i} className="text-white/70 leading-relaxed" style={{ fontSize: '14px' }}>
+                <p key={i} className="text-white/85 leading-relaxed" style={{ fontSize: '14px' }}>
                   {para}
                 </p>
               ))}

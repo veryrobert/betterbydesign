@@ -51,12 +51,19 @@ export default function Hero() {
       style={{ height: '100svh', paddingTop: '56px' }}
       aria-label="Conference introduction"
     >
-      {/* Top content — single grid, columns stretch to equal height */}
       <div className="page-x pt-6" style={{ paddingBottom: '20px' }}>
         <div className="page-grid !px-0 items-stretch" style={{ fontSize: '18px' }}>
 
-          {/* Left cols 1–3: tagline + Book Tickets */}
-          <div className="col-span-1 md:col-span-1 lg:col-span-3 flex flex-col">
+          {/* Title — first on mobile; right col on tablet; right 4 cols on desktop */}
+          <FluidContainer className="order-1 sm:col-start-2 sm:row-start-1 lg:col-span-4 lg:col-start-4 lg:row-start-1 lg:-mt-6">
+            <h1>
+              <p className="fluid-display text-bbd-black leading-none">{event.name}</p>
+              <p className="fluid-display-light text-bbd-black leading-none">{event.year}</p>
+            </h1>
+          </FluidContainer>
+
+          {/* Tagline + Tickets — second on mobile; left col on tablet; left 3 cols on desktop */}
+          <div className="order-2 sm:col-start-1 sm:row-start-1 lg:col-span-3 lg:col-start-1 flex flex-col mt-4 sm:mt-0">
             <p className="font-normal text-bbd-black leading-snug">
               {event.tagline}
               <br />
@@ -68,31 +75,27 @@ export default function Hero() {
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 underline decoration-1 underline-offset-[0.15em] hover:decoration-2 transition-all duration-200 ease-out w-fit mt-4 lg:mt-auto"
             >
-              Book Tickets
+              Tickets
               <ExternalArrow />
             </a>
           </div>
 
-          {/* Right cols 4–7: headline, then Keynotes CTA */}
-          <FluidContainer className="col-span-1 md:col-span-1 lg:col-span-4 lg:-mt-6 flex flex-col">
-            <h1>
-              <p className="fluid-display text-bbd-black leading-none">{event.name}</p>
-              <p className="fluid-display-light text-bbd-black leading-none">{event.year}</p>
-            </h1>
+          {/* Keynotes CTA — third on mobile; right col row 2 on tablet; right 4 cols row 2 on desktop */}
+          <div className="order-3 sm:col-start-2 sm:row-start-2 lg:col-span-4 lg:col-start-4 lg:row-start-2">
             <a
               href="#keynotes"
-              className="group flex items-center justify-between w-full underline decoration-1 underline-offset-[0.15em] hover:decoration-2 transition-all duration-200 ease-out mt-6 lg:mt-48"
+              className="group flex items-center justify-between w-full underline decoration-1 underline-offset-[0.15em] hover:decoration-2 transition-all duration-200 ease-out mt-6 lg:mt-12"
             >
               <span>Keynotes</span>
               <DownArrow />
             </a>
-          </FluidContainer>
+          </div>
 
         </div>
       </div>
 
-      {/* Canvas graphic — fills remaining space below the type */}
-      <div className="flex-1 w-full overflow-hidden">
+      {/* Canvas — capped at 50vh on mobile with auto top-margin for breathing room; fills remaining on sm+ */}
+      <div className="mt-auto sm:mt-0 flex-1 max-h-[50vh] sm:max-h-none w-full overflow-hidden">
         <BlockCanvas style={{ width: '100%', height: '100%' }} />
       </div>
     </section>

@@ -20,18 +20,27 @@ function MinisterCard({ slug, name, role, organisation, image }: Minister) {
   return (
     <Wrapper>
       <div
-        className="w-full overflow-hidden mb-5 flex-shrink-0 transition-opacity duration-200 group-hover:opacity-80"
-        style={{ aspectRatio: '4 / 5', backgroundColor: '#6b6238' }}
+        className="relative w-full overflow-hidden mb-5 flex-shrink-0 transition-opacity duration-200 group-hover:opacity-80"
+        style={{ aspectRatio: '4 / 5', backgroundColor: '#b8922e' }}
       >
         {image ? (
-          <Image
-            src={image}
-            alt={name}
-            width={400}
-            height={500}
-            className="w-full h-full object-cover"
-            style={{ filter: 'grayscale(100%) sepia(50%) hue-rotate(5deg) saturate(60%) brightness(90%)' }}
-          />
+          <>
+            <Image
+              src={image}
+              alt={name}
+              width={400}
+              height={500}
+              sizes="(max-width: 640px) 100vw, 33vw"
+              className="w-full h-full object-cover"
+              style={{ filter: 'grayscale(100%) brightness(0.85)', objectPosition: 'center 15%' }}
+            />
+            {/* Gold tint overlay using multiply blend */}
+            <div
+              className="absolute inset-0"
+              aria-hidden="true"
+              style={{ backgroundColor: '#c49a28', mixBlendMode: 'multiply', opacity: 0.55 }}
+            />
+          </>
         ) : (
           <div className="w-full h-full" aria-hidden="true" />
         )}
@@ -66,9 +75,10 @@ export default function Ministers() {
         return
       }
 
-      const cardHeight = items[0].getBoundingClientRect().height
+      let cumulative = 0
       items.forEach((item, i) => {
-        item.style.marginTop = i === 0 ? '' : `${i * cardHeight}px`
+        item.style.marginTop = i === 0 ? '' : `${cumulative}px`
+        cumulative += item.getBoundingClientRect().height
       })
     }
 

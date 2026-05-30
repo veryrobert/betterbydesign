@@ -81,7 +81,8 @@ function BurgerIcon({ open }: { open: boolean }) {
 
 // ─── Header ───────────────────────────────────────────────────────────────────
 export default function Header() {
-  const [menuOpen, setMenuOpen] = useState(false)
+  const [menuOpen,    setMenuOpen]    = useState(false)
+  const [navVisible,  setNavVisible]  = useState(true)
 
   // Close on resize to desktop
   useEffect(() => {
@@ -90,16 +91,52 @@ export default function Header() {
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
-  // Lock body scroll when menu is open
+  // Lock body scroll when menu is open — compensate for scrollbar width to prevent layout shift
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (menuOpen) {
+      const sw = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.paddingRight = sw ? `${sw}px` : ''
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.paddingRight = ''
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.body.style.paddingRight = ''
+      document.body.style.overflow = ''
+    }
   }, [menuOpen])
+
+  // Hide nav on scroll-down (mobile only), show on scroll-up or 3s idle
+  useEffect(() => {
+    let lastY = window.scrollY
+    let idleTimer: ReturnType<typeof setTimeout>
+
+    const onScroll = () => {
+      const y = window.scrollY
+      if (y < 80) {
+        setNavVisible(true)
+      } else if (y > lastY) {
+        setNavVisible(false)
+      } else {
+        setNavVisible(true)
+      }
+      lastY = y
+      clearTimeout(idleTimer)
+      idleTimer = setTimeout(() => setNavVisible(true), 3000)
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      clearTimeout(idleTimer)
+    }
+  }, [])
 
   return (
     <>
       <header
-        className="fixed top-0 left-0 right-0 z-50 bg-bbd-black"
+        className={`fixed top-0 left-0 right-0 z-50 bg-bbd-black transition-transform duration-300 ${!navVisible && !menuOpen ? '-translate-y-full sm:translate-y-0' : 'translate-y-0'}`}
         style={{ height: '56px' }}
         role="banner"
       >

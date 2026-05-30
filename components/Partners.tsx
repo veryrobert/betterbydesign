@@ -3,7 +3,7 @@ import { partners, partnerLogos } from '@/content/site'
 
 export default function Partners() {
   return (
-    <section className="section-y border-t border-bbd-black/10" aria-labelledby="partners-heading">
+    <section className="section-y" aria-labelledby="partners-heading">
       <div className="page-grid items-start">
         <div className="col-span-1 md:col-span-1 lg:col-span-3">
           <h2
@@ -19,17 +19,25 @@ export default function Partners() {
           >
             {partners.body}
           </p>
-          <div className="mt-32 flex flex-wrap items-center gap-6">
+          <div className="mt-16 flex flex-wrap sm:flex-nowrap items-center gap-8 sm:gap-6">
             {partnerLogos.map((logo) => (
-              <Image
+              <a
                 key={logo.src}
-                src={logo.src}
-                alt={logo.alt}
-                width={200}
-                height={40}
-                className="w-auto object-contain"
-                style={{ maxHeight: '3rem', maxWidth: '200px', width: 'auto' }}
-              />
+                href={logo.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex-shrink min-w-0"
+                aria-label={logo.alt}
+              >
+                <Image
+                  src={logo.src}
+                  alt={logo.alt}
+                  width={160}
+                  height={40}
+                  className="w-auto object-contain transition-opacity duration-200 group-hover:opacity-60"
+                  style={{ maxHeight: '2.5rem', maxWidth: '160px', width: 'auto' }}
+                />
+              </a>
             ))}
           </div>
         </div>
