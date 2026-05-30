@@ -1,6 +1,7 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import { panellists, panellistsIntro, speakerProfiles, type Panellist } from '@/content/site'
+import { img } from '@/lib/img'
 
 function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
   const hasBio = !!speakerProfiles[slug]?.bio
@@ -23,7 +24,7 @@ function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
       >
         {image ? (
           <Image
-            src={image}
+            src={img(image)}
             alt={name}
             width={550}
             height={800}

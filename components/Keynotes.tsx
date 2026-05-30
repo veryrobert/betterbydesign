@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { keynotes, speakerProfiles, type Keynote } from '@/content/site'
+import { img } from '@/lib/img'
 
 function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
   const hasBio = !!speakerProfiles[slug]?.bio
@@ -25,7 +26,7 @@ function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
       >
         {image ? (
           <Image
-            src={image}
+            src={img(image)}
             alt={name}
             width={400}
             height={500}

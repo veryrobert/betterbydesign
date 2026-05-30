@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { partners, partnerLogos } from '@/content/site'
+import { img } from '@/lib/img'
 
 export default function Partners() {
   return (
@@ -30,7 +31,7 @@ export default function Partners() {
                 aria-label={logo.alt}
               >
                 <Image
-                  src={logo.src}
+                  src={img(logo.src)}
                   alt={logo.alt}
                   width={160}
                   height={40}

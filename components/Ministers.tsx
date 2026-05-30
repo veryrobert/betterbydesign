@@ -4,6 +4,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { ministers, speakerProfiles, type Minister } from '@/content/site'
+import { img } from '@/lib/img'
 
 function MinisterCard({ slug, name, role, organisation, image }: Minister) {
   const hasBio = !!speakerProfiles[slug]
@@ -26,7 +27,7 @@ function MinisterCard({ slug, name, role, organisation, image }: Minister) {
         {image ? (
           <>
             <Image
-              src={image}
+              src={img(image)}
               alt={name}
               width={400}
               height={500}

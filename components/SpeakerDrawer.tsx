@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { speakerProfiles } from '@/content/site'
+import { img } from '@/lib/img'
 
 export default function SpeakerDrawer() {
   const searchParams = useSearchParams()
@@ -169,7 +170,7 @@ export default function SpeakerDrawer() {
               style={{ width: '96px', aspectRatio: '4 / 5', backgroundColor: '#2a2820' }}
             >
               <Image
-                src={profile.image}
+                src={img(profile.image)}
                 alt={profile.name}
                 width={96}
                 height={120}

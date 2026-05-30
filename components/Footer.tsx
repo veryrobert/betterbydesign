@@ -1,5 +1,6 @@
 import Image from 'next/image'
 import { event, social, footerDescription, partnerLogos } from '@/content/site'
+import { img } from '@/lib/img'
 import FluidContainer from '@/components/FluidContainer'
 
 // ─── Social icons ──────────────────────────────────────────────────────────────
@@ -125,7 +126,7 @@ export default function Footer() {
               className="opacity-100 hover:opacity-40 transition-opacity duration-200"
             >
               <Image
-                src={logo.src}
+                src={img(logo.src)}
                 alt={logo.alt}
                 width={200}
                 height={40}

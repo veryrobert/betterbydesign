@@ -1,5 +1,3 @@
-import { img } from '@/lib/img'
-
 // ─── Site Content ────────────────────────────────────────────────────────────
 //
 // All editable content lives here.
@@ -30,16 +28,16 @@ export const navigation = [
 export const partners = {
   heading: 'Partners & Supporters',
   body: 'Better By Design is supported by the Office of the Government Chief Information Officer and the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation.',
-  image: img('images/partners.webp'),
+  image: '/images/partners.webp',
   imageAlt: 'Conference partners and supporting organisations',
 }
 
 export const partnerLogos = [
-  { src: img('images/gov-ireland.svg'),            alt: 'Government of Ireland',          href: 'https://www.gov.ie' },
-  { src: img('images/shared-island.svg'),          alt: 'Shared Island Initiative',       href: 'https://www.gov.ie/en/campaigns/shared-island/' },
-  { src: img('images/creative-ireland.svg'),       alt: 'Creative Ireland Programme',     href: 'https://www.creativeireland.gov.ie' },
-  { src: img('images/better-public-services.svg'), alt: 'Better Public Services',         href: 'https://www.gov.ie/en/campaigns/better-public-services/' },
-  { src: img('images/idi-logo.svg'),               alt: 'Institute of Designers Ireland', href: 'https://www.idi.ie' },
+  { src: '/images/gov-ireland.svg',            alt: 'Government of Ireland',          href: 'https://www.gov.ie' },
+  { src: '/images/shared-island.svg',          alt: 'Shared Island Initiative',       href: 'https://www.gov.ie/en/campaigns/shared-island/' },
+  { src: '/images/creative-ireland.svg',       alt: 'Creative Ireland Programme',     href: 'https://www.creativeireland.gov.ie' },
+  { src: '/images/better-public-services.svg', alt: 'Better Public Services',         href: 'https://www.gov.ie/en/campaigns/better-public-services/' },
+  { src: '/images/idi-logo.svg',               alt: 'Institute of Designers Ireland', href: 'https://www.idi.ie' },
 ]
 
 // ─── Speaker Profiles ─────────────────────────────────────────────────────────
@@ -60,7 +58,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Charlotte Barker',
     role: 'Chief Executive',
     organisation: 'The Institute of Designers in Ireland',
-    image: img('images/charoltte.webp'),
+    image: '/images/charoltte.webp',
     bio: 'Charlotte is a member of the Government Forum for Digital Creative Industries and a member of An Bord for the National College of Art and Design. In 2023 Charlotte instigated the sustainability platform Design Declares and recently led Design 2035, a vision of where Irish design will be in 10 years\' time. The IDI will be leading a National Design Policy Lab programme through to 2027.',
   },
   'tania-banotti': {
@@ -68,7 +66,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Tania Banotti',
     role: 'Director',
     organisation: 'Creative Ireland',
-    image: img('images/tania.webp'),
+    image: '/images/tania.webp',
     bio: 'Tania Banotti is Director of the whole-of-government Creative Ireland Programme established in 2017, based in the Department of Culture, Communications and Sport. The goal of the programme is to embed creativity across government policy. It currently works with 8 government departments, 12 state agencies and all 31 local authorities. There are five pillars: Creative Youth, Creative Communities, Creativity, Health and Wellbeing, Creative Climate Action and Creative Industries.\n\nDesign is one of the targeted sectors under the government\'s Roadmap for the Digital Creative Industries. Creative Ireland is supporting the Institute of Designers in Ireland to make connections between policy makers in the public service and design businesses north and south over the next 3 years under the Shared Island initiative.',
   },
   'jack-chambers-td': {
@@ -76,21 +74,21 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Jack Chambers TD',
     role: 'Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
     organisation: '',
-    image: img('images/jack-chambers.webp'),
+    image: '/images/jack-chambers.webp',
   },
   'patrick-odonovan-td': {
     slug: 'patrick-odonovan-td',
     name: 'Patrick O\'Donovan TD',
     role: 'Minister for Culture, Communications and Sport',
     organisation: '',
-    image: img('images/patrick-o-donovan.webp'),
+    image: '/images/patrick-o-donovan.webp',
   },
   'frank-feighan-td': {
     slug: 'frank-feighan-td',
     name: 'Frank Feighan TD',
     role: 'Minister of State',
     organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: img('images/frank-td.webp'),
+    image: '/images/frank-td.webp',
   },
   'trevor-vaugh': {
     slug: 'trevor-vaugh',
@@ -121,7 +119,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Aidan O\'Boyle',
     role: 'Public Service Transformation Design Lead for Life Events',
     organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: img('images/aidan.webp'),
+    image: '/images/aidan.webp',
     bio: 'Aidan has been a designer his whole career and since 2012 has specialised in applying human-centred design practices inside large publicly funded organisation to transform their services. Aidan has developed Life Events based services for the New Zealand Government. At Citizens Advice UK he established the service design team and led the design of several key services including Live Chat, a Debt Management Service, Energy Advice services, and Help to Claim Universal Credit. At Genomics England he was Principal Service Designer for the Health Care Testing service which delivered Whole Genome Sequence testing services for the NHS.',
   },
   'alison-boland': {
@@ -129,7 +127,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Alison Boland',
     role: 'Head of Digital Transformation',
     organisation: 'Department of Housing, Local Government and Heritage',
-    image: img('images/alison.webp'),
+    image: '/images/alison.webp',
     bio: 'Alison leads digital transformation initiatives and brings extensive experience delivering transformation programmes across the public sector. Most recently, she led the development of the Department\'s first digital strategy, Digital Strategy 2030: Sustainable Communities and Delivery of Homes, published in January 2026, which sets out a strategic vision for digital transformation, service improvement and delivery.\n\nOriginally trained as a software developer, Alison has a strong technical background, holding both a Bachelor\'s degree and a Master of Science in Software Engineering from Maynooth University. She is currently undertaking a Master of Arts in Service Design at the National College of Art and Design (NCAD), further strengthening her focus on user-centred, inclusive and outcomes-driven public services.',
   },
   'shivaali-scully': {
@@ -137,7 +135,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Shivaali Scully',
     role: 'Senior Design Advisor, Products, Services & Systems',
     organisation: 'Centre for Excellence in Universal Design, National Disability Authority',
-    image: img('images/shivaali.webp'),
+    image: '/images/shivaali.webp',
     bio: 'Shivaali works at the intersection of universal design and inclusive service transformation, supporting organisations to embed equitable design approaches from the outset. With a background in design research and experience design, she brings over a decade of cross-sector experience spanning public and private contexts. Her particular areas of focus include universal design for circular and sustainability systems, healthcare, fashion and advancing co-design with underrepresented users.',
   },
   'kevin-horan': {
@@ -145,7 +143,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Kevin Horan',
     role: 'Head of Design',
     organisation: 'Digital Team, HSE Communications and Public Affairs',
-    image: img('images/kevin.webp'),
+    image: '/images/kevin.webp',
     bio: 'Kevin works with multidisciplinary teams spanning research, design, technology, infrastructure, communications and customer experience to help people navigate their care, and the health system.',
   },
   'john-mckeon': {
@@ -168,7 +166,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Marianne Cassidy',
     role: 'Assistant Secretary',
     organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: img('images/marianne.webp'),
+    image: '/images/marianne.webp',
     bio: 'Marianne leads the Public Service Transformation Division. She is responsible for advancing public service transformation across government, including implementation of Civil Service Renewal 2030 and shaping the next phase of public service reform. Marianne previously held senior roles with the Courts Service, the Ombudsman for Children\'s Office and the National Transport Authority.',
   },
   'dr-caoimhe-mc-mahon': {
@@ -208,7 +206,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Brenda Murphy',
     role: 'City Innovation Broker',
     organisation: 'Belfast City Council',
-    image: img('images/brenda.webp'),
+    image: '/images/brenda.webp',
     bio: 'Brenda Murphy is an experienced innovation, stakeholder engagement, and strategic development professional with more than 25 years\' experience across local government, economic development, tourism, utilities, and customer services. She has a strong track record of building partnerships between public, private, and community stakeholders, leading complex projects, and delivering initiatives that drive innovation, growth, and customer-focused outcomes.\n\nCurrently Innovation Broker at Belfast City Council, Brenda supports business innovation and collaboration across the region. Her career includes senior roles with the Department for the Economy and Tourism Northern Ireland, where she led tourism development, visitor communications, digital platforms, operational transformation, and stakeholder engagement programmes.',
   },
   'tomas-o-ruairc': {
@@ -216,7 +214,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Tomás Ó Ruairc',
     role: 'Assistant Secretary',
     organisation: 'Department of Education and Youth',
-    image: img('images/tomas.webp'),
+    image: '/images/tomas.webp',
     bio: 'His responsibilities include HR, External Staff Relations, Terms and Conditions, Initial Teacher Education policy, Strategy and Development, as well as Research, Evaluation and Knowledge Mobilisation.\n\nPrevious roles in the Department have included school transport, Irish-language policy, communications and stakeholder engagement, parents and learners, statistics and data strategy. Prior to this, he was CEO of the Teaching Council in Ireland, the statutory professional standards body for, and regulator of, the teaching profession from 2012 to 2022. He started his career as a post-primary teacher of History, Irish and Mathematics.',
   },
   'shawna-coxon': {
@@ -224,7 +222,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Shawna Coxon',
     role: 'Deputy Commissioner, Policing Operations',
     organisation: 'An Garda Síochána',
-    image: img('images/shawna.webp'),
+    image: '/images/shawna.webp',
     bio: 'Deputy Commissioner Shawna Coxon is a senior criminal justice leader with a wide range of experience obtained from serving in two countries. She is currently a Deputy Commissioner with An Garda Síochána (AGS), Ireland\'s National Police and Security Service, having taken up the role as Deputy Commissioner in 2021. AGS has approximately 18,000 personnel, and Deputy Commissioner Coxon is responsible for all policing operations in Ireland. Prior to that, she served with a large police service in Canada. Deputy Commissioner Coxon has her Master\'s in Criminology and her PhD in Criminal Law. She is also an adjunct professor who has extensively published and spoken internationally.',
   },
   'dr-rachael-singleton': {
@@ -232,7 +230,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Dr Rachael Singleton',
     role: 'Behavioural Science Lecturer',
     organisation: 'Ulster University',
-    image: img('images/rachel.webp'),
+    image: '/images/rachel.webp',
     bio: 'Rachael has worked across NI government departments in supporting the design and delivery of public policy by applying behavioural science to tackle societal, environmental and economic challenges, ranging from debtor behaviour to COVID transmission, and from net zero to business innovation. Her PhD in behavioural science and user-centred design focuses on pro-environmental behaviour change. She founded and co-chairs the international working group Behaviour Change for Sustainable Outcomes, is co-investigator on EPIC Futures NI and Future Island-Island, and leads research to embed behavioural science across the NI Civil Service.\n\nAdvisory panel member of Centre-UB, Rachael enjoys working to engage deeper understanding of human behaviour to support people and place, and working with those same people using co-design to ensure they are active in decision making and change processes that result.',
   },
   'damian-cranney': {
@@ -240,7 +238,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Damian Cranney',
     role: 'Chief Executive',
     organisation: 'Big Motive',
-    image: img('images/daimen.webp'),
+    image: '/images/daimen.webp',
     bio: 'Big Motive is a strategy and design firm based in Belfast and Dublin. For over 20 years, Damian has helped global brands, ambitious startups and public bodies design systems and services that enable better experience and business growth. Damian\'s role has evolved toward working alongside senior leaders, helping them turn complex challenges into design-led strategy and action. His work spans healthcare, government, sport and enterprise technology, from national health systems to global brands including Adidas, BBC and Allstate.\n\nDamian\'s conviction is that design is a strategic discipline, not a stage in the process, and that the organisations who win, treat the whole customer journey as a critical business function. Damian has advised startups and non-profits, acted as an external examiner, spoken and lectured widely, and is a past President of the Institute of Designers in Ireland.',
   },
 }
@@ -397,7 +395,7 @@ export const ministers: Minister[] = [
     name: 'Jack Chambers TD',
     role: 'Minister for Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
     organisation: '',
-    image: img('images/jack-chambers.webp'),
+    image: '/images/jack-chambers.webp',
   },
   {
     id: 2,
@@ -405,7 +403,7 @@ export const ministers: Minister[] = [
     name: 'Patrick O\'Donovan TD',
     role: 'Minister for Culture, Communications and Sport',
     organisation: '',
-    image: img('images/patrick-o-donovan.webp'),
+    image: '/images/patrick-o-donovan.webp',
   },
   {
     id: 3,
@@ -413,7 +411,7 @@ export const ministers: Minister[] = [
     name: 'Frank Feighan TD',
     role: 'Minister of State',
     organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: img('images/frank-td.webp'),
+    image: '/images/frank-td.webp',
   },
 ]
 
@@ -468,18 +466,18 @@ export const panellistsIntro =
   'Better By Design 2026 brings together practitioners, researchers and leaders from across the Irish public service and beyond — all working to make public services better through design.'
 
 export const panellists: Panellist[] = [
-  { id: 1,  slug: 'charlotte-barker',     name: 'Charlotte Barker',      role: 'Chief Executive',                                               organisation: 'The Institute of Designers in Ireland',        image: img('images/charoltte.webp') },
-  { id: 2,  slug: 'tania-banotti',        name: 'Tania Banotti',          role: 'Director',                                                      organisation: 'Creative Ireland',                             image: img('images/tania.webp') },
-  { id: 3,  slug: 'aidan-oboyle',         name: 'Aidan O\'Boyle',         role: 'Public Service Transformation Design Lead for Life Events',      organisation: 'DPER',                                         image: img('images/aidan.webp') },
-  { id: 4,  slug: 'alison-boland',        name: 'Alison Boland',          role: 'Head of Digital Transformation',                                organisation: 'Department of Housing, Local Government and Heritage', image: img('images/alison.webp') },
-  { id: 5,  slug: 'kevin-horan',          name: 'Kevin Horan',            role: 'Head of Design',                                                organisation: 'HSE Communications and Public Affairs',        image: img('images/kevin.webp') },
-  { id: 6,  slug: 'shivaali-scully',      name: 'Shivaali Scully',        role: 'Senior Design Advisor, Products, Services\u00a0&\u00a0Systems', organisation: 'CEUD and NDA',                                 image: img('images/shivaali.webp') },
-  { id: 7,  slug: 'marianne-cassidy',     name: 'Marianne Cassidy',       role: 'Assistant Secretary',                                           organisation: 'DPER',                                         image: img('images/marianne.webp') },
-  { id: 8,  slug: 'shawna-coxon',         name: 'Shawna Coxon',           role: 'Deputy Commissioner, Policing Operations',                      organisation: 'An Garda Síochána',                            image: img('images/shawna.webp') },
-  { id: 9,  slug: 'dr-rachael-singleton', name: 'Dr Rachael Singleton',   role: 'Behavioural Scientist Lecturer',                                organisation: 'Ulster University',                            image: img('images/rachel.webp') },
-  { id: 10, slug: 'damian-cranney',       name: 'Damian Cranney',         role: 'Chief Executive',                                               organisation: 'Big Motive',                                   image: img('images/daimen.webp') },
-  { id: 11, slug: 'tomas-o-ruairc',       name: 'Tomás Ó Ruairc',         role: 'Assistant Secretary',                                           organisation: 'Department of Education and Youth',            image: img('images/tomas.webp') },
-  { id: 12, slug: 'brenda-murphy',        name: 'Brenda Murphy',          role: 'City Innovation Broker',                                        organisation: 'Belfast City Council',                         image: img('images/brenda.webp') },
+  { id: 1,  slug: 'charlotte-barker',     name: 'Charlotte Barker',      role: 'Chief Executive',                                               organisation: 'The Institute of Designers in Ireland',        image: '/images/charoltte.webp' },
+  { id: 2,  slug: 'tania-banotti',        name: 'Tania Banotti',          role: 'Director',                                                      organisation: 'Creative Ireland',                             image: '/images/tania.webp' },
+  { id: 3,  slug: 'aidan-oboyle',         name: 'Aidan O\'Boyle',         role: 'Public Service Transformation Design Lead for Life Events',      organisation: 'DPER',                                         image: '/images/aidan.webp' },
+  { id: 4,  slug: 'alison-boland',        name: 'Alison Boland',          role: 'Head of Digital Transformation',                                organisation: 'Department of Housing, Local Government and Heritage', image: '/images/alison.webp' },
+  { id: 5,  slug: 'kevin-horan',          name: 'Kevin Horan',            role: 'Head of Design',                                                organisation: 'HSE Communications and Public Affairs',        image: '/images/kevin.webp' },
+  { id: 6,  slug: 'shivaali-scully',      name: 'Shivaali Scully',        role: 'Senior Design Advisor, Products, Services\u00a0&\u00a0Systems', organisation: 'CEUD and NDA',                                 image: '/images/shivaali.webp' },
+  { id: 7,  slug: 'marianne-cassidy',     name: 'Marianne Cassidy',       role: 'Assistant Secretary',                                           organisation: 'DPER',                                         image: '/images/marianne.webp' },
+  { id: 8,  slug: 'shawna-coxon',         name: 'Shawna Coxon',           role: 'Deputy Commissioner, Policing Operations',                      organisation: 'An Garda Síochána',                            image: '/images/shawna.webp' },
+  { id: 9,  slug: 'dr-rachael-singleton', name: 'Dr Rachael Singleton',   role: 'Behavioural Scientist Lecturer',                                organisation: 'Ulster University',                            image: '/images/rachel.webp' },
+  { id: 10, slug: 'damian-cranney',       name: 'Damian Cranney',         role: 'Chief Executive',                                               organisation: 'Big Motive',                                   image: '/images/daimen.webp' },
+  { id: 11, slug: 'tomas-o-ruairc',       name: 'Tomás Ó Ruairc',         role: 'Assistant Secretary',                                           organisation: 'Department of Education and Youth',            image: '/images/tomas.webp' },
+  { id: 12, slug: 'brenda-murphy',        name: 'Brenda Murphy',          role: 'City Innovation Broker',                                        organisation: 'Belfast City Council',                         image: '/images/brenda.webp' },
   { id: 13, slug: 'jared-gormley',        name: 'Jared Gormley',          role: 'Head of HSE Spark Innovation Programme',                        organisation: 'HSE Spark',                                    image: null },
   { id: 14, slug: 'lynne-whelan',         name: 'Lynne Whelan',           role: 'Senior Change Management Professional',                         organisation: 'SETU',                                         image: null },
   { id: 15, slug: 'malcolm-beattie',      name: 'Malcolm Beattie',        role: 'Former Head of Northern Ireland Innovation Lab',               organisation: '',                                             image: null },
