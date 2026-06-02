@@ -4,6 +4,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchParams, usePathname, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { agenda, speakerProfiles, type AgendaItem } from '@/content/site'
+import { lockScroll, unlockScroll } from '@/lib/scroll-lock'
 
 // ─── Type label map ────────────────────────────────────────────────────────────
 const TYPE_LABELS: Record<AgendaItem['type'], string> = {
@@ -158,17 +159,17 @@ export default function AgendaDrawer() {
     if (isActive) {
       setMounted(true)
       const id = requestAnimationFrame(() => requestAnimationFrame(() => setOpen(true)))
-      document.body.style.overflow = 'hidden'
+      lockScroll()
       return () => cancelAnimationFrame(id)
     } else {
       setOpen(false)
-      document.body.style.overflow = ''
+      unlockScroll()
       const t = setTimeout(() => setMounted(false), 350)
       return () => clearTimeout(t)
     }
   }, [isActive])
 
-  useEffect(() => () => { document.body.style.overflow = '' }, [])
+  useEffect(() => () => { if (isActive) unlockScroll() }, [isActive])
 
   useEffect(() => {
     if (!open) return

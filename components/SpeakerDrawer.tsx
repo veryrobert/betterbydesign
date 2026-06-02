@@ -5,6 +5,7 @@ import { useSearchParams, useRouter } from 'next/navigation'
 import Image from 'next/image'
 import { speakerProfiles } from '@/content/site'
 import { img } from '@/lib/img'
+import { lockScroll, unlockScroll } from '@/lib/scroll-lock'
 
 export default function SpeakerDrawer() {
   const searchParams = useSearchParams()
@@ -45,11 +46,11 @@ export default function SpeakerDrawer() {
     if (isActive) {
       setMounted(true)
       const id = requestAnimationFrame(() => requestAnimationFrame(() => setOpen(true)))
-      document.body.style.overflow = 'hidden'
+      lockScroll()
       return () => cancelAnimationFrame(id)
     } else {
       setOpen(false)
-      document.body.style.overflow = ''
+      unlockScroll()
       const t = setTimeout(() => setMounted(false), 350)
       return () => clearTimeout(t)
     }
@@ -73,7 +74,7 @@ export default function SpeakerDrawer() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [speakerId])
 
-  useEffect(() => () => { document.body.style.overflow = '' }, [])
+  useEffect(() => () => { if (isActive) unlockScroll() }, [isActive])
 
   useEffect(() => {
     if (!open) return
