@@ -33,3 +33,9 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# source/scratch images (originals, downloads, test files)
+*.jpg
+*.jpeg
+*.png
+public/images/speakers/
