@@ -99,7 +99,7 @@ export default function Hero() {
       </div>
 
       {/* Canvas — capped at 50vh on mobile with auto top-margin for breathing room; fills remaining on sm+ */}
-      <div className="mt-auto sm:mt-0 flex-none h-[40svh] sm:flex-1 sm:h-auto max-h-[40svh] w-full overflow-hidden">
+      <div className="flex-1 max-h-[40svh] sm:max-h-none w-full overflow-hidden">
         <BlockCanvas style={{ width: '100%', height: '100%' }} />
       </div>
     </section>
