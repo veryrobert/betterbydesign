@@ -16,6 +16,10 @@ const siteUrl = process.env.GITHUB_ACTIONS
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Better By Design 2026',
+  appleWebApp: {
+    title: 'Better By Design',
+    statusBarStyle: 'default',
+  },
   description:
     'A one-day conference and showcase bringing together public servants, designers, and policy makers to explore how design principles can transform public services. Thursday 18 June 2026 — The Lighthouse, Dublin.',
   openGraph: {
