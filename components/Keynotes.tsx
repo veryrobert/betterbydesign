@@ -17,22 +17,31 @@ function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
 
   return (
     <Wrapper>
-      <div
-        className="w-full overflow-hidden mb-5 flex-shrink-0 transition-opacity duration-200 group-hover:opacity-80"
-        style={{ aspectRatio: '4 / 5', backgroundColor: '#4a4530' }}
-      >
-        {image ? (
-          <Image
-            src={img(image)}
-            alt={name}
-            width={400}
-            height={500}
-            className="w-full h-full object-cover"
-            style={{ filter: 'grayscale(100%) sepia(50%) hue-rotate(5deg) saturate(60%) brightness(90%)' }}
-          />
-        ) : (
-          <div className="w-full h-full" aria-hidden="true" />
+      <div className="relative w-full mb-5 flex-shrink-0">
+        {hasBio && (
+          <div className="absolute bottom-0 right-0 z-10 w-6 h-6 bg-[#8D844E] flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         )}
+        <div
+          className="w-full overflow-hidden transition-opacity duration-200 group-hover:opacity-80"
+          style={{ aspectRatio: '4 / 5', backgroundColor: '#4a4530' }}
+        >
+          {image ? (
+            <Image
+              src={img(image)}
+              alt={name}
+              width={400}
+              height={500}
+              className="w-full h-full object-cover"
+              style={{ filter: 'grayscale(100%) sepia(50%) hue-rotate(5deg) saturate(60%) brightness(90%)' }}
+            />
+          ) : (
+            <div className="w-full h-full" aria-hidden="true" />
+          )}
+        </div>
       </div>
 
       <p className="font-semibold leading-snug text-white" style={{ fontSize: '24px' }}>

@@ -1,4 +1,4 @@
-import { themes, actionPlanUrl, themesActionDescription, type Theme } from '@/content/site'
+import { themes, themesActionDescription, type Theme } from '@/content/site'
 
 function ExternalArrow() {
   return (
@@ -26,7 +26,7 @@ function ThemeItem({ number, title, subtitle }: Theme) {
     <article className="flex gap-6">
       {/* Hanging number */}
       <span
-        className="flex-shrink-0 font-semibold leading-none text-bbd-black select-none sm:-ml-6"
+        className="flex-shrink-0 font-semibold leading-none text-bbd-black select-none sm:-ml-10"
         aria-hidden="true"
         style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
       >
@@ -75,13 +75,13 @@ export default function Themes() {
 
           <div>
             <a
-              href={actionPlanUrl}
+              href="assets/brochure.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 underline decoration-1 underline-offset-[0.15em] hover:decoration-2 transition-all duration-200 ease-out text-bbd-black"
               style={{ fontSize: '18px' }}
             >
-              Designing Better Public Services Action Plan
+              Conference Brochure
               <ExternalArrow />
             </a>
           </div>
@@ -98,7 +98,7 @@ export default function Themes() {
           </ul>
 
           <p
-            className="mt-auto pt-20 md:pt-24 lg:pt-64 text-bbd-black leading-relaxed"
+            className="mt-auto pt-20 md:pt-24 lg:pt-36 text-bbd-black leading-relaxed"
             style={{ fontSize: '18px', maxWidth: '60ch' }}
           >
             {themesActionDescription}

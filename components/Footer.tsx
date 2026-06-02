@@ -42,14 +42,14 @@ export default function Footer() {
     <footer className="bg-white text-bbd-black" role="contentinfo">
 
       {/* Non-flush black rule */}
-      <div className="page-x pt-24">
+      <div className="page-x pt-4">
         <div className="border-t border-bbd-black" />
       </div>
 
       {/* Top row — description + social */}
       <div className="section-y page-grid items-start">
         {/* Left: descriptive text */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-2">
+        <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2">
           <p className="text-bbd-black leading-relaxed" style={{ fontSize: '18px' }}>
             {footerDescription.intro}
             <a
@@ -84,7 +84,7 @@ export default function Footer() {
         </div>
 
         {/* Right: social icons */}
-        <div className="col-span-1 md:col-span-1 lg:col-span-5 flex justify-end items-start mt-4 lg:mt-0">
+        <div className="col-span-1 md:col-span-1 lg:col-span-4 xl:col-span-5 flex justify-end items-start mt-4 lg:mt-0">
           <nav aria-label="Social media">
             <ul className="flex items-center gap-5 list-none m-0 p-0">
               {social.map(({ platform, href, label }) => {

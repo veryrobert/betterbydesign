@@ -18,22 +18,31 @@ function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
   return (
     <Wrapper>
       {/* Portrait image — 550×800 ratio */}
-      <div
-        className="overflow-hidden mb-4 flex-shrink-0 transition-opacity duration-200 group-hover:opacity-80"
-        style={{ width: '70%', aspectRatio: '550 / 800', backgroundColor: '#EEECEA' }}
-      >
-        {image ? (
-          <Image
-            src={img(image)}
-            alt={name}
-            width={550}
-            height={800}
-            className="w-full h-full object-cover"
-            style={{ filter: 'grayscale(100%) sepia(50%) hue-rotate(5deg) saturate(60%) brightness(90%)' }}
-          />
-        ) : (
-          <div className="w-full h-full" aria-hidden="true" />
+      <div className="relative mb-4 flex-shrink-0" style={{ width: '70%' }}>
+        {hasBio && (
+          <div className="absolute bottom-0 right-0 z-10 w-6 h-6 bg-[#8D844E] flex items-center justify-center">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M9 18l6-6-6-6" stroke="#1E1E1E" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+            </svg>
+          </div>
         )}
+        <div
+          className="w-full overflow-hidden transition-opacity duration-200 group-hover:opacity-80"
+          style={{ aspectRatio: '550 / 800', backgroundColor: '#EEECEA' }}
+        >
+          {image ? (
+            <Image
+              src={img(image)}
+              alt={name}
+              width={550}
+              height={800}
+              className="w-full h-full object-cover"
+              style={{ filter: 'grayscale(100%) sepia(50%) hue-rotate(5deg) saturate(60%) brightness(90%)' }}
+            />
+          ) : (
+            <div className="w-full h-full" aria-hidden="true" />
+          )}
+        </div>
       </div>
 
       <p className="font-semibold leading-snug text-bbd-black" style={{ fontSize: '18px' }}>
