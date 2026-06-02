@@ -10,7 +10,7 @@ export const event = {
   year: '2026',
   tagline: 'Public Service Design',
   subtag: 'Conference & Showcase',
-  date: 'Thursday 26 June 2026',
+  date: 'Thursday 18 June 2026',
   location: 'The Lighthouse, Dublin',
   ticketsUrl:
     'https://www.eventbrite.com/e/better-by-design-tickets-1988012336414?aff=oddtdtcreator',

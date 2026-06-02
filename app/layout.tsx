@@ -17,11 +17,11 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: 'Better By Design 2026',
   description:
-    'A one-day conference and showcase bringing together public servants, designers, and policy makers to explore how design principles can transform public services. Thursday 26 June 2026 — The Lighthouse, Dublin.',
+    'A one-day conference and showcase bringing together public servants, designers, and policy makers to explore how design principles can transform public services. Thursday 18 June 2026 — The Lighthouse, Dublin.',
   openGraph: {
     title: 'Better By Design 2026',
     description:
-      'A one-day conference bringing together public servants, designers, and policy makers to explore how design can transform public services. 26 June 2026 — The Lighthouse, Dublin.',
+      'A one-day conference bringing together public servants, designers, and policy makers to explore how design can transform public services. 18 June 2026 — The Lighthouse, Dublin.',
     type: 'website',
     images: [
       {
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Better By Design 2026',
     description:
-      'A one-day conference bringing together public servants, designers, and policy makers. 26 June 2026 — The Lighthouse, Dublin.',
+      'A one-day conference bringing together public servants, designers, and policy makers. 18 June 2026 — The Lighthouse, Dublin.',
     images: ['images/betterbydesign-sharecard.png'],
   },
 }
