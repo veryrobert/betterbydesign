@@ -39,3 +39,7 @@ next-env.d.ts
 *.jpeg
 *.png
 public/images/speakers/
+
+# allow app icons
+!app/icon.png
+!app/apple-icon.png
