@@ -4,6 +4,7 @@ import Link from 'next/link'
 import { Suspense, useEffect, useState } from 'react'
 import { useSearchParams } from 'next/navigation'
 import { navigation, event } from '@/content/site'
+import { lockScroll, unlockScroll } from '@/lib/scroll-lock'
 
 const isClientNav = (href: string) => href.startsWith('/?')
 
@@ -73,7 +74,7 @@ function BurgerIcon({ open }: { open: boolean }) {
   return (
     <span className="flex flex-col gap-[5px] w-5" aria-hidden="true">
       <span className={`block h-[2px] w-full bg-white origin-center transition-transform duration-200 ease-out ${open ? 'translate-y-[7px] rotate-45' : ''}`} />
-      <span className={`block h-[2px] w-full bg-white transition-opacity duration-200 ease-out ${open ? 'opacity-0' : ''}`} />
+      <span className={`block h-[2px] w-full bg-white transition-opacity duration-150 ease-out ${open ? 'opacity-0' : 'opacity-100'}`} />
       <span className={`block h-[2px] w-full bg-white origin-center transition-transform duration-200 ease-out ${open ? '-translate-y-[7px] -rotate-45' : ''}`} />
     </span>
   )
@@ -96,14 +97,13 @@ export default function Header() {
     if (menuOpen) {
       const sw = window.innerWidth - document.documentElement.clientWidth
       document.body.style.paddingRight = sw ? `${sw}px` : ''
-      document.body.style.overflow = 'hidden'
+      lockScroll()
     } else {
       document.body.style.paddingRight = ''
-      document.body.style.overflow = ''
+      unlockScroll()
     }
     return () => {
       document.body.style.paddingRight = ''
-      document.body.style.overflow = ''
     }
   }, [menuOpen])
 
