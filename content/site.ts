@@ -35,9 +35,9 @@ export const partners = {
 
 export const partnerLogos = [
   { src: '/images/gov-ireland.svg',            alt: 'Government of Ireland',          href: 'https://www.gov.ie' },
-  { src: '/images/shared-island.svg',          alt: 'Shared Island Initiative',       href: 'https://www.gov.ie/en/campaigns/shared-island/' },
+  { src: '/images/shared-island.svg',          alt: 'Shared Island Initiative',       href: 'https://www.gov.ie/en/department-of-the-taoiseach/campaigns/shared-island/' },
   { src: '/images/creative-ireland.svg',       alt: 'Creative Ireland Programme',     href: 'https://www.creativeireland.gov.ie' },
-  { src: '/images/better-public-services.svg', alt: 'Better Public Services',         href: 'https://www.gov.ie/en/campaigns/better-public-services/' },
+  { src: '/images/better-public-services.svg', alt: 'Better Public Services',         href: 'https://www.gov.ie/en/department-of-public-expenditure-infrastructure-public-service-reform-and-digitalisation/campaigns/better-public-services/' },
   { src: '/images/idi-logo.svg',               alt: 'Institute of Designers Ireland', href: 'https://www.idi.ie' },
 ]
 
