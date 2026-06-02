@@ -10,7 +10,7 @@ const ibmPlexSans = IBM_Plex_Sans({
 })
 
 const siteUrl = process.env.GITHUB_ACTIONS
-  ? 'https://veryrobert.github.io/betterbydesign/'
+  ? 'https://betterbydesign.ie/'
   : 'http://localhost:3000/'
 
 export const metadata: Metadata = {
