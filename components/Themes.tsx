@@ -28,7 +28,7 @@ function ThemeItem({ number, title, subtitle }: Theme) {
       <span
         className="flex-shrink-0 font-semibold leading-none text-bbd-black select-none sm:-ml-10"
         aria-hidden="true"
-        style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
+        style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.875rem)' }}
       >
         {number}
       </span>
@@ -36,13 +36,13 @@ function ThemeItem({ number, title, subtitle }: Theme) {
       <div>
         <h3
           className="font-semibold text-bbd-black leading-none"
-          style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
+          style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.875rem)' }}
         >
           {title}
         </h3>
         <p
           className="font-normal text-bbd-black leading-none mt-2"
-          style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
+          style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.875rem)' }}
         >
           {subtitle}
         </p>
@@ -66,7 +66,7 @@ export default function Themes() {
               <h2
                 id="themes-heading"
                 className="font-semibold text-bbd-black leading-none"
-                style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
+                style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.875rem)' }}
               >
                 Themes
               </h2>

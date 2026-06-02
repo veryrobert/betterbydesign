@@ -84,7 +84,7 @@ export default function Footer() {
         </div>
 
         {/* Right: social icons */}
-        <div className="col-span-1 md:col-span-1 lg:col-span-4 xl:col-span-5 flex justify-end items-start mt-4 lg:mt-0">
+        <div className="col-span-1 md:col-span-1 lg:col-span-4 xl:col-span-5 flex justify-start md:justify-end items-start mt-4 lg:mt-0">
           <nav aria-label="Social media">
             <ul className="flex items-center gap-5 list-none m-0 p-0">
               {social.map(({ platform, href, label }) => {

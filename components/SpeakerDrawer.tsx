@@ -97,17 +97,16 @@ export default function SpeakerDrawer() {
   // Lower z-index so the agenda panel sits on top
   return (
     <>
-      {/* Backdrop — standalone only; agenda has its own in side-by-side */}
-      {!isSideBySide && (
-        <div
-          aria-hidden="true"
-          onClick={handleClose}
-          className={[
-            'fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm transition-opacity duration-300',
-            open ? 'opacity-100' : 'opacity-0 pointer-events-none',
-          ].join(' ')}
-        />
-      )}
+      {/* Backdrop — standalone always; side-by-side on mobile only */}
+      <div
+        aria-hidden="true"
+        onClick={isSideBySide ? handleBack : handleClose}
+        className={[
+          'fixed inset-0 z-[120] bg-black/70 backdrop-blur-sm transition-opacity duration-300',
+          isSideBySide ? 'md:hidden' : '',
+          open ? 'opacity-100' : 'opacity-0 pointer-events-none',
+        ].join(' ')}
+      />
 
       {/* Panel */}
       <div
@@ -119,39 +118,40 @@ export default function SpeakerDrawer() {
         className={[
           'fixed inset-y-0 flex flex-col w-full outline-none transition-transform duration-300 ease-out',
           isSideBySide
-            ? 'right-0 md:right-[36rem] md:max-w-xs z-[105] bg-[#161616]'
+            ? 'right-0 md:right-[36rem] md:max-w-xs z-[130] md:z-[105] bg-[#161616]'
             : 'right-0 md:max-w-sm z-[130] bg-[#1E1E1E]',
           open ? 'translate-x-0' : 'translate-x-full',
         ].join(' ')}
       >
-        {/* Header — standalone only */}
-        {!isSideBySide && (
-          <div
-            className="flex items-center justify-between px-6 border-b border-white/10 flex-shrink-0"
-            style={{ height: '56px' }}
+        {/* Header — standalone always; side-by-side on mobile only */}
+        <div
+          className={[
+            'flex items-center justify-between px-6 border-b border-white/10 flex-shrink-0',
+            isSideBySide ? 'md:hidden' : '',
+          ].join(' ')}
+          style={{ height: '56px' }}
+        >
+          <button
+            onClick={handleBack}
+            className="flex items-center gap-2 text-white/40 hover:text-white transition-colors"
+            aria-label="Back"
+            style={{ fontSize: '13px' }}
           >
-            <button
-              onClick={handleBack}
-              className="flex items-center gap-2 text-white/40 hover:text-white transition-colors"
-              aria-label="Back"
-              style={{ fontSize: '13px' }}
-            >
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-              Back
-            </button>
-            <button
-              onClick={handleClose}
-              aria-label="Close"
-              className="text-white/40 hover:text-white transition-colors p-1 -mr-1"
-            >
-              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-                <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-              </svg>
-            </button>
-          </div>
-        )}
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+              <path d="M10 3L5 8l5 5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+            </svg>
+            Back
+          </button>
+          <button
+            onClick={handleClose}
+            aria-label="Close"
+            className="text-white/40 hover:text-white transition-colors p-1 -mr-1"
+          >
+            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+              <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+            </svg>
+          </button>
+        </div>
 
         {/* Scrollable content */}
         <div

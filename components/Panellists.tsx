@@ -18,7 +18,7 @@ function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
   return (
     <Wrapper>
       {/* Portrait image — 550×800 ratio */}
-      <div className="relative mb-4 flex-shrink-0" style={{ width: '70%' }}>
+      <div className="relative mb-4 flex-shrink-0 w-full sm:w-[70%]">
         {hasBio && (
           <div className="absolute bottom-0 right-0 z-10 w-6 h-6 bg-[#8D844E] flex items-center justify-center">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">

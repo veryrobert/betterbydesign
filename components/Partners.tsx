@@ -20,7 +20,7 @@ export default function Partners() {
           >
             {partners.body}
           </p>
-          <div className="mt-48 flex flex-wrap sm:flex-nowrap items-center gap-8 sm:gap-6">
+          <div className="mt-10 md:mt-48 flex flex-wrap sm:flex-nowrap items-center gap-8 sm:gap-6">
             {partnerLogos.map((logo) => (
               <a
                 key={logo.src}
