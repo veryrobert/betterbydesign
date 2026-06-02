@@ -2,7 +2,7 @@
 
 **Public Service Design — Conference & Showcase**
 
-Thursday 26 June 2026
+Thursday 18 June 2026
 The Lighthouse, Dublin
 
 A Shared Island event delivered by the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation in partnership with Creative Ireland, and hosted by the Institute of Designers Ireland.
@@ -108,7 +108,7 @@ Better By Design is supported by the Office of the Government Chief Information 
 
 ## Development
 
-Built with Next.js (static export), deployed to GitHub Pages at `/betterbydesign`.
+Built with Next.js (static export), deployed to GitHub Pages and served via custom domain at [betterbydesign.ie](https://betterbydesign.ie).
 
 ### Setup
 
@@ -127,7 +127,7 @@ Static output is generated to the `out/` directory.
 
 ### Deploy
 
-Deployment is handled automatically via GitHub Actions on push to `main`. The site is published to GitHub Pages with the base path `/betterbydesign`.
+Deployment is handled automatically via GitHub Actions on push to `main`. The site is published to GitHub Pages and served via the custom domain `betterbydesign.ie` (no base path).
 
 ### Image handling
 
