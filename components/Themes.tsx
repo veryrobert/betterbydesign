@@ -98,7 +98,7 @@ export default function Themes() {
           </ul>
 
           <p
-            className="mt-auto pt-32 lg:pt-64 text-bbd-black leading-relaxed"
+            className="mt-auto pt-20 md:pt-24 lg:pt-64 text-bbd-black leading-relaxed"
             style={{ fontSize: '18px', maxWidth: '60ch' }}
           >
             {themesActionDescription}

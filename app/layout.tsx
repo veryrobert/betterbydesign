@@ -9,7 +9,12 @@ const ibmPlexSans = IBM_Plex_Sans({
   display: 'swap',
 })
 
+const siteUrl = process.env.GITHUB_ACTIONS
+  ? 'https://veryrobert.github.io/betterbydesign/'
+  : 'http://localhost:3000/'
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: 'Better By Design 2026',
   description:
     'A one-day conference and showcase bringing together public servants, designers, and policy makers to explore how design principles can transform public services. Thursday 26 June 2026 — The Lighthouse, Dublin.',

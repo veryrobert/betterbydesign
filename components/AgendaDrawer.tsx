@@ -34,7 +34,7 @@ function SpeakerLink({ slug }: { slug: string }) {
       <span className={`block font-semibold text-white text-[14px] md:text-[16px] leading-snug${hasBio ? ' group-hover:text-[#00A432] transition-colors duration-150' : ''}`}>
         {profile.name}
       </span>
-      <span className={`block text-[11px] md:text-[12px] leading-snug mt-0.5 transition-colors duration-150 ${hasBio ? 'text-white/40 group-hover:text-white/60' : 'text-white/40'}`}>
+      <span className={`block text-[11px] md:text-[12px] leading-snug mt-0.5 transition-colors duration-150 ${hasBio ? 'text-white/60 group-hover:text-white/80' : 'text-white/60'}`}>
         {profile.role}{profile.organisation ? `, ${profile.organisation}` : ''}
       </span>
     </>
@@ -92,7 +92,7 @@ function AgendaRow({ item }: { item: AgendaItem }) {
             {/* Subtitle — same size, lighter weight */}
             {item.subtitle && (
               <div
-                className={`mt-0.5 ${isSimple ? 'text-white/30' : 'text-white'}`}
+                className={`mt-0.5 ${isSimple ? 'text-white/60' : 'text-white'}`}
                 style={{ fontSize: isPanel ? '18px' : '13px', fontWeight: 400 }}
               >
                 {item.subtitle}
@@ -103,13 +103,13 @@ function AgendaRow({ item }: { item: AgendaItem }) {
 
         {/* Moderator */}
         {item.moderator && speakerProfiles[item.moderator] && (
-          <div className="mt-3 text-white/40" style={{ fontSize: '12px' }}>
+          <div className="mt-3 text-white/60" style={{ fontSize: '12px' }}>
             Moderator:{' '}
             {speakerProfiles[item.moderator]?.bio ? (
               <Link
                 href={`?panel=speaker&id=${item.moderator}`}
                 scroll={false}
-                className="text-white/60 hover:text-white transition-colors"
+                className="text-white/80 hover:text-white transition-colors"
               >
                 {speakerProfiles[item.moderator]?.name}
               </Link>

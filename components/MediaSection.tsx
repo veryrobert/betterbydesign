@@ -1,29 +1,74 @@
-// Media section — replace the placeholder with an <img> or <video> element
-// when the asset is ready. Maintains 16:6 aspect ratio.
+'use client'
+
+import { useEffect, useRef, useState } from 'react'
+import Image from 'next/image'
+import { img } from '@/lib/img'
+
+const IMAGES = [
+  {
+    src: img('/images/gallery-1.webp'),
+    alt: 'Workshop participants collaborating with sticky notes on a board',
+    caption: null,
+  },
+  {
+    src: img('/images/gallery-2.webp'),
+    alt: 'Students working at a table during NCAD MA Service Design programme',
+    caption: 'NCAD MA Service Design',
+  },
+]
+
+const INTERVAL = 4000
 
 export default function MediaSection() {
+  const sectionRef  = useRef<HTMLDivElement>(null)
+  const [active, setActive] = useState(0)
+  const [started, setStarted] = useState(false)
+
+  useEffect(() => {
+    const el = sectionRef.current
+    if (!el) return
+    const io = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) setStarted(true) },
+      { threshold: 0.2 }
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  useEffect(() => {
+    if (!started) return
+    const id = setInterval(() => setActive(i => (i + 1) % IMAGES.length), INTERVAL)
+    return () => clearInterval(id)
+  }, [started])
+
   return (
-    <section aria-label="Conference media" className="border-t border-bbd-black/10">
-      <div
-        className="w-full bg-bbd-black/5 relative overflow-hidden"
-        style={{ aspectRatio: '16 / 6' }}
-        role="img"
-        aria-label="Conference media — placeholder"
-      >
-        {/* Replace with:
-            <img src="images/conference-photo.jpg" alt="..." className="w-full h-full object-cover" />
-            or
-            <video src="/video/highlight.mp4" autoPlay muted loop playsInline className="w-full h-full object-cover" />
-        */}
-        <div className="absolute inset-0 flex items-center justify-center">
-          <div
-            className="text-bbd-black/20 font-medium tracking-widest uppercase"
-            style={{ fontSize: '12px', letterSpacing: '0.2em' }}
-          >
-            Media
-          </div>
+    <div ref={sectionRef} className="px-4 pb-4">
+    <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16 / 6' }}>
+      {IMAGES.map((image, i) => (
+        <div
+          key={i}
+          className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${i === active ? 'opacity-100' : 'opacity-0'}`}
+          aria-hidden={i !== active}
+        >
+          <Image
+            src={image.src}
+            alt={image.alt}
+            fill
+            className="object-cover"
+            sizes="100vw"
+            priority={i === 0}
+          />
+          {image.caption && (
+            <span
+              className="absolute bottom-2 right-3 text-white/80 select-none pointer-events-none"
+              style={{ fontSize: '10px' }}
+            >
+              {image.caption}
+            </span>
+          )}
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
+    </div>
   )
 }

@@ -80,7 +80,7 @@ export default function Panellists() {
         </div>
 
         {/* Right: grid */}
-        <div className="col-span-1 md:col-span-2 lg:col-span-3 mt-10 lg:mt-0">
+        <div className="col-span-1 md:col-span-2 lg:col-span-4 xl:col-span-3 mt-10 lg:mt-0">
           <ul
             className="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-12 list-none m-0 p-0"
             role="list"

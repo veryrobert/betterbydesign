@@ -18,11 +18,12 @@ export const event = {
 }
 
 export const navigation = [
-  { label: 'Agenda',     href: '/?panel=agenda', external: false },
-  { label: 'Ministers',  href: '#ministers',      external: false },
-  { label: 'Keynotes',   href: '#keynotes',       external: false },
-  { label: 'Themes',     href: '#themes',         external: false },
-  { label: 'Panellists', href: '#panellists',     external: false },
+  { label: 'Agenda',     href: '/?panel=agenda',       external: false },
+  { label: 'Ministers',  href: '#ministers',            external: false },
+  { label: 'Keynotes',   href: '#keynotes',             external: false },
+  { label: 'Themes',     href: '#themes',               external: false },
+  { label: 'Panellists', href: '#panellists',           external: false },
+  { label: 'Brochure',   href: 'assets/brochure.pdf',   external: true  },
 ]
 
 export const partners = {
@@ -58,7 +59,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Charlotte Barker',
     role: 'Chief Executive',
     organisation: 'The Institute of Designers in Ireland',
-    image: '/images/charoltte.webp',
+    image: '/images/charlotte-barker.webp',
     bio: 'Charlotte is a member of the Government Forum for Digital Creative Industries and a member of An Bord for the National College of Art and Design. In 2023 Charlotte instigated the sustainability platform Design Declares and recently led Design 2035, a vision of where Irish design will be in 10 years\' time. The IDI will be leading a National Design Policy Lab programme through to 2027.',
   },
   'tania-banotti': {
@@ -95,7 +96,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Trevor Vaugh',
     role: 'Public Sector Design Lead',
     organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: null,
+    image: '/images/trevor-vaugh.webp',
     bio: 'Trevor has led the work to embed design across government. He chaired the group that created Ireland\'s first Government Design Principles — approved by Cabinet in 2022 — and subsequently led the development and delivery of the Action Plan for Designing Better Public Services.\n\nTrevor was a tenured academic in Strategic Design at Maynooth University, founding Mi:Lab — a national research lab for higher education transformation. Previously he developed innovative medical devices and holds more than 50 patents in healthcare innovation. He co-authored ARRIVE (Routledge, 2021) and has published widely on strategic design for change. Trevor presented RTÉ\'s Science to the Rescue documentary and appeared as an expert on the series The Big Life Fix. He co-developed AI voice technology for veteran journalist Charlie Bird.\n\nTrevor sits on several steering groups and advisory boards, supporting public sector design initiatives, shaping design policy and development for the OECD, World Bank, and European Commission.',
   },
   'ben-holliday': {
@@ -103,7 +104,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Ben Holliday',
     role: 'Chief Design Officer',
     organisation: 'TPXimpact',
-    image: null,
+    image: '/images/ben-holliday.webp',
     bio: 'Ben Holliday is an experienced leader and Chief Design Officer at TPXimpact. With over 25 years\' experience he works with teams to support the transformation of organisations and public services. Ben previously worked in the UK government, holding key roles at the Department for Work and Pensions (DWP) and the Government Digital Service (GDS). Before this, he delivered major product and service work across the not-for-profit, arts, education, and financial sectors. In 2022, Ben published his first book, Multiplied: How Digital Transformation Can Deliver More Impact for the Public Sector.',
   },
   'prof-sabine-junginger': {
@@ -111,7 +112,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Professor Sabine Junginger',
     role: 'Professor of Design & Vice Chancellor\'s Fellow',
     organisation: 'Northumbria University',
-    image: null,
+    image: '/images/sabine-junginger.webp',
     bio: 'Sabine Junginger is Professor and Vice Chancellor\'s Fellow at Northumbria University in the UK. Her research focuses on human-centred design in government with a concern for policy making and policy implementation. She approaches these challenges from the lived experiences of everyday people, public servants and policy makers. She brings an international perspective drawing on her work with Swiss municipalities, Brazilian ministries and her advisory roles for experimental projects like OECD Government to Government incubator program.\n\nShe is the author of Transforming Public Services by Design – Reorienting Policies, Organizations and Services Around People (Routledge 2016) and has been an ongoing research fellow at the Hertie School, recently recognized to be the top Policy School in Germany. Her recent work engages with the challenges and implications of digital-first and digital-only public services in ageing societies. She is currently working on the 2nd edition of the Bloomsbury Handbook of Design Management.',
   },
   'aidan-oboyle': {
@@ -158,7 +159,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Angela Denning',
     role: 'Chief Executive',
     organisation: 'Courts Service',
-    image: null,
+    image: '/images/angela-denning.webp',
     bio: 'Angela Denning was appointed Chief Executive in 2019 and has more than 30 years\' experience in the civil service. She has served as Deputy Master of the High Court, is a qualified barrister and has a master\'s in leadership and strategy. She leads a 10-year modernisation programme across ten programme streams aimed at improving access to justice through digital transformation and service redesign.\n\nShe has prioritised user-friendly services with a vision rooted in making justice more efficient and responsive to societal needs. She has a deep understanding of the justice sector\'s complexities and seeks to drive reform with a focus on digital enablement, simplification of procedures, and stakeholder engagement. She is a member of the Board of the Courts Service, the Public Service Data Governance Board and the Northern Ireland Courts and Tribunal Service Themis Programme Board.',
   },
   'marianne-cassidy': {
@@ -174,7 +175,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Dr Caoimhe Mc Mahon',
     role: 'Programme Lead for the MA and Professional Diploma in Service Design',
     organisation: 'National College of Art and Design',
-    image: null,
+    image: '/images/caoimhe-mc-mahon.webp',
     bio: 'Caoimhe also heads NCAD Design Lab: Civic, a national centre for applied design research, focused on public sector transformation and citizen participation.\n\nHer work focuses on public sector service design, and the role of human-centred, evidence-led approaches in improving public services and citizen experiences. She is particularly interested in how co-design approaches, collaborative sense-making, and experience prototyping can be embedded within public sector organisations to support service improvement for service providers and users, and build long-term capacity for innovation across the public sector.',
   },
   'malcolm-beattie': {
@@ -182,7 +183,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Malcolm Beattie',
     role: 'Former Head of Northern Ireland Innovation Lab',
     organisation: '',
-    image: null,
+    image: '/images/malcolm-beattie.webp',
     bio: 'Malcolm Beattie is a former Civil Servant who spent 10 years as Head of the Northern Ireland Public Sector Innovation Lab. The iLab was created in 2014 to respond to challenges where effective service provision for the public has proved most difficult. Malcolm was responsible for its establishment and evolution and was at the forefront of promoting innovation in the Northern Ireland Public Sector.\n\nMalcolm has extensive experience in developing innovative solutions. He championed Service Design, Behavioural Science, Policy Innovation and Systems Modelling as fundamental tools for the design and delivery of improved public services. He maintains a close interest in public sector innovation and transformation and writes about the associated challenges facing public sector leaders as they address rising public demand and widespread calls for reform.',
   },
   'jared-gormley': {
@@ -190,7 +191,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Jared Gormley',
     role: 'Head of HSE Spark Innovation Programme',
     organisation: 'HSE Spark',
-    image: null,
+    image: '/images/jared-gormley.webp',
     bio: 'The HSE Spark Innovation Programme is Ireland\'s national frontline healthcare innovation initiative. Since leading the programme from its early development, Jared has worked to build a culture of innovation across the Irish health service by empowering healthcare staff to identify challenges and develop practical, patient-centred solutions. The HSE Spark Programme supports clinicians and multidisciplinary teams through innovation training, design methodologies, collaboration networks and funding opportunities, helping transform ideas into impactful improvements in care delivery and service design.\n\nWith a strong focus on human-centred design and frontline-led change, Jared champions the belief that those closest to patient care are best positioned to drive meaningful healthcare innovation. Under his leadership, Spark has grown into a nationally recognised programme supporting thousands of healthcare professionals and showcasing innovation that improves patient outcomes, staff experience and system efficiency.',
   },
   'lynne-whelan': {
@@ -198,7 +199,7 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     name: 'Lynne Whelan',
     role: 'Senior Change Management Professional',
     organisation: 'South East Technological University',
-    image: null,
+    image: '/images/lynne-whelan.webp',
     bio: 'Lynne is a specialist in organisational transformation through design, with multiple international publications on innovation and change. Her proven framework, process, and toolkits have been applied across hundreds of organisations worldwide, equipping teams to adapt with confidence, and use design to uncover opportunities and evaluate ideas for real-world impact.\n\nHer career spans a wealth of experience in both commercial and public sector settings, coupled with a strong track record in shaping process development within the design industry. In her current role as Senior Change Management Professional at SETU, Lynne works with teams and departments to turn the university\'s ambitious strategic plan into results-driven, meaningful action, through her bespoke design framework.',
   },
   'brenda-murphy': {
@@ -357,7 +358,7 @@ export const keynotes: Keynote[] = [
     name: 'Trevor Vaugh',
     role: 'Public Sector Design Lead',
     organisation: 'DPER',
-    image: null,
+    image: '/images/trevor-vaugh.webp',
   },
   {
     id: 2,
@@ -365,7 +366,7 @@ export const keynotes: Keynote[] = [
     name: 'Ben Holliday',
     role: 'Chief Design Officer',
     organisation: 'TPXImpact',
-    image: null,
+    image: '/images/ben-holliday.webp',
   },
   {
     id: 3,
@@ -373,7 +374,7 @@ export const keynotes: Keynote[] = [
     name: 'Prof. Sabine Junginger',
     role: 'Professor of Design & Vice Chancellor\'s Fellow',
     organisation: 'Northumbria University',
-    image: null,
+    image: '/images/sabine-junginger.webp',
   },
 ]
 
@@ -443,13 +444,19 @@ export const themes: Theme[] = [
     subtitle: 'Workforce & Organisation of the Future',
     description: '',
   },
+  {
+    number: '4',
+    title: 'Designing with Evidence',
+    subtitle: 'Evidence-Informed Policies and Services',
+    description: '',
+  },
 ]
 
 export const themesActionDescription =
-  "Ireland's Action Plan for Designing Better Public Services provides a tangible, practical and comprehensive pathway for how Government will integrate design principles across the Public Service leading to more people-centred, inclusive, user-friendly and effective public services."
+  "Three years on from the launch of Ireland's Action Plan for Designing Better Public Services, Better By Design 2026 takes stock of what has been achieved and looks ahead. The Action Plan set a clear direction for embedding design across the public service — this conference brings together the people doing that work to share what's working, where the challenges are, and how we keep building."
 
 export const actionPlanUrl =
-  'https://www.gov.ie/en/publication/105bc-the-action-plan-for-designing-better-public-services/'
+  'https://www.gov.ie/en/department-of-public-expenditure-infrastructure-public-service-reform-and-digitalisation/publications/action-plan-for-designing-better-public-services/'
 
 // ─── Panellists ──────────────────────────────────────────────────────────────
 
@@ -466,7 +473,7 @@ export const panellistsIntro =
   'Better By Design 2026 brings together practitioners, researchers and leaders from across the Irish public service and beyond — all working to make public services better through design.'
 
 export const panellists: Panellist[] = [
-  { id: 1,  slug: 'charlotte-barker',     name: 'Charlotte Barker',      role: 'Chief Executive',                                               organisation: 'The Institute of Designers in Ireland',        image: '/images/charoltte.webp' },
+  { id: 1,  slug: 'charlotte-barker',     name: 'Charlotte Barker',      role: 'Chief Executive',                                               organisation: 'The Institute of Designers in Ireland',        image: '/images/charlotte-barker.webp' },
   { id: 2,  slug: 'tania-banotti',        name: 'Tania Banotti',          role: 'Director',                                                      organisation: 'Creative Ireland',                             image: '/images/tania.webp' },
   { id: 3,  slug: 'aidan-oboyle',         name: 'Aidan O\'Boyle',         role: 'Public Service Transformation Design Lead for Life Events',      organisation: 'DPER',                                         image: '/images/aidan.webp' },
   { id: 4,  slug: 'alison-boland',        name: 'Alison Boland',          role: 'Head of Digital Transformation',                                organisation: 'Department of Housing, Local Government and Heritage', image: '/images/alison.webp' },
@@ -478,10 +485,10 @@ export const panellists: Panellist[] = [
   { id: 10, slug: 'damian-cranney',       name: 'Damian Cranney',         role: 'Chief Executive',                                               organisation: 'Big Motive',                                   image: '/images/daimen.webp' },
   { id: 11, slug: 'tomas-o-ruairc',       name: 'Tomás Ó Ruairc',         role: 'Assistant Secretary',                                           organisation: 'Department of Education and Youth',            image: '/images/tomas.webp' },
   { id: 12, slug: 'brenda-murphy',        name: 'Brenda Murphy',          role: 'City Innovation Broker',                                        organisation: 'Belfast City Council',                         image: '/images/brenda.webp' },
-  { id: 13, slug: 'jared-gormley',        name: 'Jared Gormley',          role: 'Head of HSE Spark Innovation Programme',                        organisation: 'HSE Spark',                                    image: null },
-  { id: 14, slug: 'lynne-whelan',         name: 'Lynne Whelan',           role: 'Senior Change Management Professional',                         organisation: 'SETU',                                         image: null },
-  { id: 15, slug: 'malcolm-beattie',      name: 'Malcolm Beattie',        role: 'Former Head of Northern Ireland Innovation Lab',               organisation: '',                                             image: null },
-  { id: 16, slug: 'dr-caoimhe-mc-mahon',  name: 'Dr Caoimhe Mc Mahon',    role: 'Programme Lead, MA and Professional Diploma in Service Design', organisation: 'National College of Art and Design',           image: null },
+  { id: 13, slug: 'jared-gormley',        name: 'Jared Gormley',          role: 'Head of HSE Spark Innovation Programme',                        organisation: 'HSE Spark',                                    image: '/images/jared-gormley.webp' },
+  { id: 14, slug: 'lynne-whelan',         name: 'Lynne Whelan',           role: 'Senior Change Management Professional',                         organisation: 'SETU',                                         image: '/images/lynne-whelan.webp' },
+  { id: 15, slug: 'malcolm-beattie',      name: 'Malcolm Beattie',        role: 'Former Head of Northern Ireland Innovation Lab',               organisation: '',                                             image: '/images/malcolm-beattie.webp' },
+  { id: 16, slug: 'dr-caoimhe-mc-mahon',  name: 'Dr Caoimhe Mc Mahon',    role: 'Programme Lead, MA and Professional Diploma in Service Design', organisation: 'National College of Art and Design',           image: '/images/caoimhe-mc-mahon.webp' },
 ]
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
