@@ -5,16 +5,17 @@ import { useEffect, useState } from 'react'
 const PASSWORD = process.env.NEXT_PUBLIC_SITE_PASSWORD
 
 export default function PasswordGate({ children }: { children: React.ReactNode }) {
-  const [authed, setAuthed] = useState<boolean | null>(null)
+  // Start authed=true if no password is configured, false otherwise.
+  // This avoids a server/client hydration mismatch.
+  const [authed, setAuthed] = useState(!PASSWORD)
   const [value, setValue] = useState('')
   const [error, setError] = useState(false)
 
   useEffect(() => {
-    if (!PASSWORD) { setAuthed(true); return }
-    setAuthed(sessionStorage.getItem('bbd_auth') === '1')
+    if (!PASSWORD) return
+    if (sessionStorage.getItem('bbd_auth') === '1') setAuthed(true)
   }, [])
 
-  if (authed === null) return null
   if (authed) return <>{children}</>
 
   const submit = (e: React.FormEvent) => {
