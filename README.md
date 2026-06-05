@@ -43,7 +43,7 @@ Speakers: Aidan O'Boyle, Alison Boland, Shivaali Scully, Kevin Horan, John McKeo
 
 **Designing How We Work** — Workforce and Organisation of the Future
 Moderated by Marianne Cassidy (DPER)
-Speakers: Dr Caoimhe Mc Mahon, Malcolm Beattie, Jared Gormley, Lynne Whelan, Brenda Murphy
+Speakers: Dr Caoimhe Mc Mahon, Malcolm Beattie, Jared Gormly, Lynne Whelan, Brenda Murphy
 
 **Designing with Evidence** — Evidence-Informed Policies and Services
 Moderated by Tomás Ó Ruairc (Department of Education and Youth)
@@ -87,7 +87,7 @@ Research focuses on human-centred design in government, policy making and implem
 - Damian Cranney — Chief Executive, Big Motive
 - Tomás Ó Ruairc — Assistant Secretary, Department of Education and Youth
 - Brenda Murphy — City Innovation Broker, Belfast City Council
-- Jared Gormley — Head of HSE Spark Innovation Programme, HSE Spark
+- Jared Gormly — Head of HSE Spark Innovation Programme, HSE Spark
 - Lynne Whelan — Senior Change Management Professional, SETU
 - Malcolm Beattie — Former Head of Northern Ireland Innovation Lab
 - Dr Caoimhe Mc Mahon — Programme Lead, MA and Professional Diploma in Service Design, NCAD
