@@ -39,7 +39,7 @@ Tickets: https://www.eventbrite.com/e/better-by-design-tickets-1988012336414
 
 **Designing Digital** — Digital and Innovation at Scale
 Moderated by Angela Denning (Courts Service)
-Speakers: Aidan O'Boyle, Alison Boland, Shivaali Scully, Kevin Horan, John McKeon
+Speakers: Aidan O'Boyle, Alison Boland, Dan Eames, Kevin Horan, John McKeon
 
 **Designing How We Work** — Workforce and Organisation of the Future
 Moderated by Marianne Cassidy (DPER)
@@ -80,7 +80,7 @@ Research focuses on human-centred design in government, policy making and implem
 - Aidan O'Boyle — Public Service Transformation Design Lead for Life Events, DPER
 - Alison Boland — Head of Digital Transformation, Department of Housing, Local Government and Heritage
 - Kevin Horan — Head of Design, HSE Communications and Public Affairs
-- Shivaali Scully — Senior Design Advisor, Centre for Excellence in Universal Design, NDA
+- Dan Eames — Senior Digital Design Advisor, Centre for Excellence in Universal Design, NDA
 - Marianne Cassidy — Assistant Secretary, DPER
 - Shawna Coxon — Deputy Commissioner, Policing Operations, An Garda Síochána
 - Dr Rachael Singleton — Behavioural Science Lecturer, Ulster University
