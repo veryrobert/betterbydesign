@@ -6,7 +6,7 @@ import { useEffect, useRef } from 'react'
 // as a fallback for older environments. The CSS var overrides the cqw value
 // when set; if undefined the browser's native cqw implementation wins.
 const CQW_SUPPORTED =
-  typeof CSS !== 'undefined' && CSS.supports('font-size', '1cqw')
+  typeof CSS !== 'undefined' && typeof CSS.supports === 'function' && CSS.supports('font-size', '1cqw')
 
 export default function FluidContainer({
   children,
