@@ -96,7 +96,7 @@ Research focuses on human-centred design in government, policy making and implem
 
 ## Partners & Supporters
 
-Better By Design is supported by the  Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation.
+A Shared Island event delivered by the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation in partnership with Creative Ireland, and hosted by the Institute of Designers Ireland.
 
 - Government of Ireland
 - Shared Island Initiative

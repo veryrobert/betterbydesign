@@ -28,7 +28,7 @@ export const navigation = [
 
 export const partners = {
   heading: 'Partners & Supporters',
-  body: 'Better By Design is supported by the  Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation.',
+  body: 'A Shared Island event delivered by the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation in partnership with Creative Ireland, and hosted by the Institute of Designers Ireland.',
   image: '/images/partners.webp',
   imageAlt: 'Conference partners and supporting organisations',
 }
