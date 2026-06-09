@@ -28,7 +28,7 @@ export const navigation = [
 
 export const partners = {
   heading: 'Partners & Supporters',
-  body: 'Better By Design is supported by the Office of the Government Chief Information Officer and the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation.',
+  body: 'Better By Design is supported by the  Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation.',
   image: '/images/partners.webp',
   imageAlt: 'Conference partners and supporting organisations',
 }

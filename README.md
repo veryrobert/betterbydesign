@@ -96,7 +96,7 @@ Research focuses on human-centred design in government, policy making and implem
 
 ## Partners & Supporters
 
-Better By Design is supported by the Office of the Government Chief Information Officer and the Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation.
+Better By Design is supported by the  Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation.
 
 - Government of Ireland
 - Shared Island Initiative
