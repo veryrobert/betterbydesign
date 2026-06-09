@@ -1,7 +1,6 @@
 import type { Metadata } from 'next'
 import { IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
-import PasswordGate from '@/components/PasswordGate'
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -62,7 +61,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <PasswordGate>{children}</PasswordGate>
+        {children}
       </body>
     </html>
   )
