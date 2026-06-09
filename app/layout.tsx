@@ -46,6 +46,8 @@ export const metadata: Metadata = {
   },
 }
 
+const buildVersion = process.env.BUILD_VERSION ?? 'dev'
+
 export default function RootLayout({
   children,
 }: {
@@ -53,6 +55,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={ibmPlexSans.variable}>
+      <head>
+        <meta name="build-version" content={buildVersion} />
+      </head>
       <body className="bg-white text-bbd-black antialiased font-sans">
         <a href="#main-content" className="skip-link">
           Skip to main content

@@ -36,6 +36,7 @@ jobs:
         env:
           NEXT_PUBLIC_BASE_PATH: ${{ vars.NEXT_PUBLIC_BASE_PATH }}
           NEXT_PUBLIC_SITE_PASSWORD: ${{ secrets.SITE_PASSWORD }}
+          BUILD_VERSION: ${{ github.sha }}
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
