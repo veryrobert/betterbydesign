@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { panellists, panellistsIntro, speakerProfiles, type Panellist } from '@/content/site'
 import { img } from '@/lib/img'
+import FadeIn from '@/components/FadeIn'
 
 function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
   const hasBio = !!speakerProfiles[slug]?.bio
@@ -65,27 +66,33 @@ export default function Panellists() {
       <div className="page-grid items-start">
         {/* Left: intro — sticks while grid scrolls */}
         <div className="col-span-1 md:col-span-2 lg:col-span-3 lg:sticky" style={{ top: '76px', alignSelf: 'start' }}>
-          <h2
-            id="panellists-heading"
-            className="font-semibold text-bbd-black leading-none"
-            style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
-          >
-            Panellists
-          </h2>
-          <p
-            className="mt-4 text-bbd-black leading-relaxed"
-            style={{ fontSize: '18px', maxWidth: '40ch' }}
-          >
-            {panellistsIntro}
-          </p>
-          <Link
-            href="/?panel=agenda"
-            scroll={false}
-            className="group inline-flex items-center gap-2 mt-6 underline decoration-1 underline-offset-[0.15em] hover:decoration-2 transition-all duration-200 ease-out text-bbd-black"
-            style={{ fontSize: '18px' }}
-          >
-            View Agenda
-          </Link>
+          <FadeIn>
+            <h2
+              id="panellists-heading"
+              className="font-semibold text-bbd-black leading-none"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
+            >
+              Panellists
+            </h2>
+          </FadeIn>
+          <FadeIn delay={80}>
+            <p
+              className="mt-4 text-bbd-black leading-relaxed"
+              style={{ fontSize: '18px', maxWidth: '40ch' }}
+            >
+              {panellistsIntro}
+            </p>
+          </FadeIn>
+          <FadeIn delay={140}>
+            <Link
+              href="/?panel=agenda"
+              scroll={false}
+              className="group inline-flex items-center gap-2 mt-6 underline decoration-1 underline-offset-[0.15em] hover:decoration-2 transition-all duration-200 ease-out text-bbd-black"
+              style={{ fontSize: '18px' }}
+            >
+              View Agenda
+            </Link>
+          </FadeIn>
         </div>
 
         {/* Right: grid */}
@@ -94,9 +101,11 @@ export default function Panellists() {
             className="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-12 list-none m-0 p-0"
             role="list"
           >
-            {panellists.map((person) => (
+            {panellists.map((person, i) => (
               <li key={person.id}>
-                <PanellistCard {...person} />
+                <FadeIn delay={i * 40}>
+                  <PanellistCard {...person} />
+                </FadeIn>
               </li>
             ))}
           </ul>

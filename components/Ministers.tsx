@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useEffect, useRef } from 'react'
 import { ministers, speakerProfiles, type Minister } from '@/content/site'
 import { img } from '@/lib/img'
+import FadeIn from '@/components/FadeIn'
 
 function MinisterCard({ slug, name, role, organisation, image }: Minister) {
   const hasBio = !!speakerProfiles[slug]
@@ -99,13 +100,15 @@ export default function Ministers() {
       <div className="page-grid items-start">
         {/* Left: heading — sticks alongside the cards */}
         <div className="col-span-1 md:col-span-2 lg:col-span-3 lg:sticky" style={{ top: '76px' }}>
-          <h2
-            id="ministers-heading"
-            className="font-semibold text-bbd-black leading-none"
-            style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
-          >
-            Ministers
-          </h2>
+          <FadeIn>
+            <h2
+              id="ministers-heading"
+              className="font-semibold text-bbd-black leading-none"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
+            >
+              Ministers
+            </h2>
+          </FadeIn>
         </div>
 
         {/* Right: sticky cards */}
@@ -115,13 +118,15 @@ export default function Ministers() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-5 list-none m-0 p-0 items-start"
             role="list"
           >
-            {ministers.map((minister) => (
+            {ministers.map((minister, i) => (
               <li
                 key={minister.id}
                 className="lg:sticky"
                 style={{ top: '76px' }}
               >
-                <MinisterCard {...minister} />
+                <FadeIn delay={i * 100}>
+                  <MinisterCard {...minister} />
+                </FadeIn>
               </li>
             ))}
           </ul>

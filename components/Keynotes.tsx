@@ -2,6 +2,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { keynotes, speakerProfiles, type Keynote } from '@/content/site'
 import { img } from '@/lib/img'
+import FadeIn from '@/components/FadeIn'
 
 function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
   const hasBio = !!speakerProfiles[slug]?.bio
@@ -65,13 +66,15 @@ export default function Keynotes() {
       <div className="page-grid items-start">
         {/* Left: heading — sticks alongside the cards on desktop */}
         <div className="col-span-1 md:col-span-2 lg:col-span-3 lg:sticky" style={{ top: '76px' }}>
-          <h2
-            id="keynotes-heading"
-            className="font-semibold text-white leading-none"
-            style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
-          >
-            Keynotes
-          </h2>
+          <FadeIn>
+            <h2
+              id="keynotes-heading"
+              className="font-semibold text-white leading-none"
+              style={{ fontSize: 'clamp(2rem, 3.5vw, 2.875rem)' }}
+            >
+              Keynotes
+            </h2>
+          </FadeIn>
         </div>
 
         {/* Right: sticky cards — each offset by the height of the card above */}
@@ -80,9 +83,11 @@ export default function Keynotes() {
             className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-5 list-none m-0 p-0 items-start"
             role="list"
           >
-            {keynotes.map((keynote) => (
+            {keynotes.map((keynote, i) => (
               <li key={keynote.id}>
-                <KeynoteCard {...keynote} />
+                <FadeIn delay={i * 100}>
+                  <KeynoteCard {...keynote} />
+                </FadeIn>
               </li>
             ))}
           </ul>

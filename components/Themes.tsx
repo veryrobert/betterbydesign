@@ -1,4 +1,5 @@
 import { themes, themesActionDescription, type Theme } from '@/content/site'
+import FadeIn from '@/components/FadeIn'
 
 function ExternalArrow() {
   return (
@@ -63,17 +64,19 @@ export default function Themes() {
         <div className="col-span-1 md:col-span-2 lg:col-span-3 flex flex-col">
           <div className="flex-1">
             <div className="lg:sticky" style={{ top: '76px' }}>
-              <h2
-                id="themes-heading"
-                className="font-semibold text-bbd-black leading-none"
-                style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.875rem)' }}
-              >
-                Themes
-              </h2>
+              <FadeIn>
+                <h2
+                  id="themes-heading"
+                  className="font-semibold text-bbd-black leading-none"
+                  style={{ fontSize: 'clamp(1.5rem, 3.5vw, 2.875rem)' }}
+                >
+                  Themes
+                </h2>
+              </FadeIn>
             </div>
           </div>
 
-          <div>
+          <FadeIn delay={200}>
             <a
               href="assets/brochure.pdf"
               target="_blank"
@@ -84,25 +87,29 @@ export default function Themes() {
               Conference Brochure
               <ExternalArrow />
             </a>
-          </div>
+          </FadeIn>
         </div>
 
         {/* Right: theme list + description at bottom */}
         <div className="col-span-1 md:col-span-2 lg:col-span-4 mt-8 lg:mt-0 flex flex-col">
           <ul className="flex flex-col gap-12 list-none m-0 p-0" role="list">
-            {themes.map((theme) => (
+            {themes.map((theme, i) => (
               <li key={theme.number}>
-                <ThemeItem {...theme} />
+                <FadeIn delay={i * 80}>
+                  <ThemeItem {...theme} />
+                </FadeIn>
               </li>
             ))}
           </ul>
 
-          <p
-            className="mt-auto pt-20 md:pt-24 lg:pt-36 text-bbd-black leading-relaxed"
-            style={{ fontSize: '18px', maxWidth: '60ch' }}
-          >
-            {themesActionDescription}
-          </p>
+          <FadeIn delay={100}>
+            <p
+              className="mt-auto pt-20 md:pt-24 lg:pt-36 text-bbd-black leading-relaxed"
+              style={{ fontSize: '18px', maxWidth: '60ch' }}
+            >
+              {themesActionDescription}
+            </p>
+          </FadeIn>
         </div>
       </div>
     </section>
