@@ -2,6 +2,7 @@ import Image from 'next/image'
 import { event, social, footerDescription, partnerLogos } from '@/content/site'
 import { img } from '@/lib/img'
 import FluidContainer from '@/components/FluidContainer'
+import FadeIn from '@/components/FadeIn'
 
 // ─── Social icons ──────────────────────────────────────────────────────────────
 
@@ -50,72 +51,77 @@ export default function Footer() {
       <div className="section-y page-grid items-start">
         {/* Left: descriptive text */}
         <div className="col-span-1 md:col-span-3 lg:col-span-3 xl:col-span-2">
-          <p className="text-bbd-black leading-relaxed" style={{ fontSize: '18px' }}>
-            {footerDescription.intro}
-            <a
-              href={footerDescription.org1.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-1 underline-offset-[0.15em]"
-            >
-              {footerDescription.org1.label}
-            </a>
-            {footerDescription.mid1}
-            <a
-              href={footerDescription.org2.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-1 underline-offset-[0.15em]"
-            >
-              {footerDescription.org2.label}
-            </a>
-            {footerDescription.mid2}
-            <a
-              href={footerDescription.org3.href}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline decoration-1 underline-offset-[0.15em]"
-            >
-              {footerDescription.org3.label}
-            </a>
-            {footerDescription.end}
-          </p>
-
+          <FadeIn>
+            <p className="text-bbd-black leading-relaxed" style={{ fontSize: '18px' }}>
+              {footerDescription.intro}
+              <a
+                href={footerDescription.org1.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-1 underline-offset-[0.15em]"
+              >
+                {footerDescription.org1.label}
+              </a>
+              {footerDescription.mid1}
+              <a
+                href={footerDescription.org2.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-1 underline-offset-[0.15em]"
+              >
+                {footerDescription.org2.label}
+              </a>
+              {footerDescription.mid2}
+              <a
+                href={footerDescription.org3.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline decoration-1 underline-offset-[0.15em]"
+              >
+                {footerDescription.org3.label}
+              </a>
+              {footerDescription.end}
+            </p>
+          </FadeIn>
         </div>
 
         {/* Right: social icons */}
         <div className="col-span-1 md:col-span-1 lg:col-span-4 xl:col-span-5 flex justify-start md:justify-end items-start mt-4 lg:mt-0">
-          <nav aria-label="Social media">
-            <ul className="flex items-center gap-5 list-none m-0 p-0">
-              {social.map(({ platform, href, label }) => {
-                const Icon = iconMap[platform]
-                return (
-                  <li key={platform}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label={label}
-                      className="text-bbd-black hover:opacity-50 transition-opacity duration-200 ease-out block"
-                    >
-                      <Icon />
-                    </a>
-                  </li>
-                )
-              })}
-            </ul>
-          </nav>
+          <FadeIn delay={80}>
+            <nav aria-label="Social media">
+              <ul className="flex items-center gap-5 list-none m-0 p-0">
+                {social.map(({ platform, href, label }) => {
+                  const Icon = iconMap[platform]
+                  return (
+                    <li key={platform}>
+                      <a
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={label}
+                        className="text-bbd-black hover:opacity-50 transition-opacity duration-200 ease-out block"
+                      >
+                        <Icon />
+                      </a>
+                    </li>
+                  )
+                })}
+              </ul>
+            </nav>
+          </FadeIn>
         </div>
       </div>
 
       {/* Bottom row — large logotype left, partner logos bottom-right */}
       <div className="page-x pt-8 md:pt-24 pb-4 flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 sm:gap-8">
-        <FluidContainer style={{ minWidth: 0, flex: '1 1 auto' }}>
-          <p className="fluid-display text-bbd-black leading-none">{event.name}</p>
-          <p className="fluid-display-light text-bbd-black leading-none" style={{ marginBottom: '-0.18em' }}>{event.year}</p>
-        </FluidContainer>
+        <FadeIn delay={120} className="min-w-0 flex-auto">
+          <FluidContainer>
+            <p className="fluid-display text-bbd-black leading-none">{event.name}</p>
+            <p className="fluid-display-light text-bbd-black leading-none" style={{ marginBottom: '-0.18em' }}>{event.year}</p>
+          </FluidContainer>
+        </FadeIn>
 
-        <div className="self-end flex flex-wrap items-end gap-6">
+        <FadeIn delay={200} className="self-end flex flex-wrap items-end gap-6">
           {partnerLogos.map((logo) => (
             <a
               key={logo.src}
@@ -135,7 +141,7 @@ export default function Footer() {
               />
             </a>
           ))}
-        </div>
+        </FadeIn>
       </div>
 
     </footer>

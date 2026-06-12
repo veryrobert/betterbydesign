@@ -1,5 +1,8 @@
+'use client'
+
 import Image from 'next/image'
 import Link from 'next/link'
+import { useEffect, useRef } from 'react'
 import { keynotes, speakerProfiles, type Keynote } from '@/content/site'
 import { img } from '@/lib/img'
 import FadeIn from '@/components/FadeIn'
@@ -56,6 +59,38 @@ function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
 }
 
 export default function Keynotes() {
+  const listRef = useRef<HTMLUListElement>(null)
+
+  useEffect(() => {
+    const list = listRef.current
+    if (!list) return
+
+    const applyOffsets = () => {
+      const items = Array.from(list.querySelectorAll<HTMLLIElement>('li'))
+      if (!items.length) return
+
+      // Reset before measuring
+      items.forEach((item) => { item.style.height = ''; item.style.marginTop = '' })
+
+      if (window.innerWidth < 640) return
+
+      // Equalise all cards to the tallest
+      const maxH = Math.max(...items.map((item) => item.getBoundingClientRect().height))
+      items.forEach((item) => { item.style.height = `${maxH}px` })
+
+      // Offset each card by the preceding image-container heights only
+      let cumulative = 0
+      items.forEach((item, i) => {
+        item.style.marginTop = i === 0 ? '' : `${cumulative}px`
+        const imgBox = item.querySelector<HTMLElement>('div')
+        cumulative += imgBox ? imgBox.getBoundingClientRect().height : maxH
+      })
+    }
+
+    applyOffsets()
+    window.addEventListener('resize', applyOffsets)
+    return () => window.removeEventListener('resize', applyOffsets)
+  }, [])
 
   return (
     <section
@@ -80,11 +115,16 @@ export default function Keynotes() {
         {/* Right: sticky cards — each offset by the height of the card above */}
         <div className="col-span-1 md:col-span-2 lg:col-span-4 mt-8 lg:mt-0">
           <ul
+            ref={listRef}
             className="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-5 list-none m-0 p-0 items-start"
             role="list"
           >
             {keynotes.map((keynote, i) => (
-              <li key={keynote.id}>
+              <li
+                key={keynote.id}
+                className="lg:sticky"
+                style={{ top: '76px' }}
+              >
                 <FadeIn delay={i * 100}>
                   <KeynoteCard {...keynote} />
                 </FadeIn>

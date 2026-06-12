@@ -1,6 +1,6 @@
 'use client'
 
-import { ElementType, ReactNode } from 'react'
+import { ElementType, ReactNode, useEffect, useState } from 'react'
 import { useInView } from '@/hooks/useInView'
 
 interface Props {
@@ -11,21 +11,26 @@ interface Props {
 }
 
 export default function FadeIn({ children, className, delay = 0, as: Tag = 'div' }: Props) {
-  const { ref, visible, mounted } = useInView()
+  const { ref, visible } = useInView()
+  const [reducedMotion, setReducedMotion] = useState(false)
 
-  const style = mounted && !visible
-    ? {
-        opacity: 0,
-        transform: 'translateY(18px)',
-        transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
+  useEffect(() => {
+    const mq = window.matchMedia('(prefers-reduced-motion: reduce)')
+    setReducedMotion(mq.matches)
+    const handler = (e: MediaQueryListEvent) => setReducedMotion(e.matches)
+    mq.addEventListener('change', handler)
+    return () => mq.removeEventListener('change', handler)
+  }, [])
+
+  const style = reducedMotion
+    ? { opacity: visible ? 1 : 0 }
+    : {
+        opacity: visible ? 1 : 0,
+        transform: visible ? 'none' : 'translateY(18px)',
+        transition: visible
+          ? `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`
+          : undefined,
       }
-    : visible
-    ? {
-        opacity: 1,
-        transform: 'none',
-        transition: `opacity 0.65s ease ${delay}ms, transform 0.65s ease ${delay}ms`,
-      }
-    : undefined
 
   return (
     <Tag ref={ref as any} className={className} style={style}>
