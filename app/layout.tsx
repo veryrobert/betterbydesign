@@ -1,9 +1,6 @@
 import type { Metadata } from 'next'
 import { IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
-import Drawers from '@/components/Drawers'
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -50,11 +47,7 @@ export const metadata: Metadata = {
 
 const buildVersion = process.env.BUILD_VERSION ?? 'dev'
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={ibmPlexSans.variable}>
       <head>
@@ -64,10 +57,7 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <Header />
         {children}
-        <Footer />
-        <Drawers />
       </body>
     </html>
   )
