@@ -161,8 +161,9 @@ export const speakerProfiles: Record<string, SpeakerProfile> = {
     slug: 'john-mckeon',
     name: 'John McKeon',
     role: 'Secretary General',
-    organisation: 'Department of Public Expenditure, Infrastructure, Public Service Reform and Digitalisation',
-    image: null,
+    organisation: 'Department of Social Protection',
+    image: '/images/john-mckeon.webp',
+    bio: 'John McKeon joined the Department of Social Protection in October 2010 and was appointed Secretary General in July 2017.\n\nPrior to his appointment he held Assistant Secretary positions with responsibility for activation policy, the development and implementation of the Pathways to Work programme, and the modernisation of the department\'s public office (Intreo) services. He also held responsibility for staff relations and Finance, Legislation and PRSI policy.\n\nPrior to joining the department he worked for the Department of Post and Telegraphs / Telecom Éireann / Eircom over a period of 31 years most latterly as Managing Director of eircom Wholesale.',
   },
   'angela-denning': {
     slug: 'angela-denning',
@@ -510,6 +511,7 @@ export const panellists: Panellist[] = [
   { id: 14, slug: 'lynne-whelan',         name: 'Lynne Whelan',           role: 'Senior Change Management Professional',                         organisation: 'SETU',                                         image: '/images/lynne-whelan.webp' },
   { id: 15, slug: 'malcolm-beattie',      name: 'Malcolm Beattie',        role: 'Former Head of Northern Ireland Innovation Lab',               organisation: '',                                             image: '/images/malcolm-beattie.webp' },
   { id: 16, slug: 'dr-caoimhe-mc-mahon',  name: 'Dr Caoimhe Mc Mahon',    role: 'Programme Lead, MA and Professional Diploma in Service Design', organisation: 'National College of Art and Design',           image: '/images/caoimhe-mc-mahon.webp' },
+  { id: 17, slug: 'john-mckeon',          name: 'John McKeon',            role: 'Secretary General',                                             organisation: 'Department of Social Protection',              image: '/images/john-mckeon.webp' },
 ]
 
 // ─── Footer ───────────────────────────────────────────────────────────────────
