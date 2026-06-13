@@ -45,16 +45,16 @@ export default function LivePage() {
         )}
       </div>
 
-      {/* Footer bar */}
-      <div
-        className="page-x flex items-center justify-between border-t border-white/10 text-white/30 flex-shrink-0"
-        style={{ height: '48px', fontSize: '12px' }}
-      >
-        <span>{event.date} — {event.location}</span>
-        <Link href="/" className="hover:text-white transition-colors">
+      {/* Footer */}
+      <footer className="page-x py-6 border-t border-white/10 flex-shrink-0" style={{ fontSize: '12px' }}>
+        <p className="text-white/30">{event.date} — {event.location}</p>
+        <Link
+          href="/"
+          className="mt-1 block text-white/30 hover:text-white transition-colors"
+        >
           betterbydesign.ie
         </Link>
-      </div>
+      </footer>
 
     </main>
   )
