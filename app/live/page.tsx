@@ -1,27 +1,35 @@
-import { event } from '@/content/site'
-import Link from 'next/link'
+import type { Metadata } from 'next'
+import { event, partnerLogos } from '@/content/site'
+import Image from 'next/image'
+import LiveHeader from '@/components/LiveHeader'
+import { img } from '@/lib/img'
+
+export const metadata: Metadata = {
+  title: 'Better By Design 2026 — Live Stream',
+  description: 'Watch the Better By Design 2026 conference live. Public Service Design — The Lighthouse, Dublin, 18 June 2026.',
+  openGraph: {
+    title: 'Better By Design 2026 — Live Stream',
+    description: 'Watch the Better By Design 2026 conference live. Public Service Design — The Lighthouse, Dublin.',
+    images: [{ url: 'images/betterbydesign-sharecard.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Better By Design 2026 — Live Stream',
+    description: 'Watch the Better By Design 2026 conference live. Public Service Design — The Lighthouse, Dublin.',
+    images: ['images/betterbydesign-sharecard.png'],
+  },
+}
 
 export default function LivePage() {
   return (
     <div className="min-h-screen bg-bbd-black flex flex-col text-white">
 
-      {/* Header */}
-      <header
-        className="page-x flex items-center justify-between flex-shrink-0 border-b border-white/10"
-        style={{ height: '56px' }}
-      >
-        <Link href="/" className="font-semibold text-white hover:opacity-60 transition-opacity" style={{ fontSize: '15px' }}>
-          Better By Design
-        </Link>
-        <span className="text-white/40" style={{ fontSize: '13px' }}>
-          {event.date}
-        </span>
-      </header>
+      <LiveHeader />
 
-      {/* Video */}
-      <main id="main-content" className="flex-1 flex flex-col">
+      {/* Video area */}
+      <main id="main-content" className="flex-1 flex flex-col page-x pt-5 pb-24 gap-10">
         {event.isLive ? (
-          <div className="flex-1 relative" style={{ minHeight: '56.25vw' }}>
+          <div className="flex-1 relative">
             <iframe
               src={event.liveStreamUrl}
               title="Better By Design 2026 — Live Stream"
@@ -31,47 +39,57 @@ export default function LivePage() {
             />
           </div>
         ) : (
-          <>
-            {/* Video placeholder */}
-            <div
-              className="w-full bg-white/5 flex items-center justify-center flex-shrink-0"
-              style={{ aspectRatio: '16 / 9' }}
-            >
-              <div className="text-center">
-                <div className="w-16 h-16 rounded-full border border-white/20 flex items-center justify-center mx-auto mb-4">
-                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1" aria-hidden="true">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                </div>
-                <p className="text-white/30" style={{ fontSize: '13px' }}>Live stream will appear here</p>
+          <div
+            className="w-full flex-shrink-0 flex items-center justify-center bg-white/10 rounded-sm"
+            style={{ aspectRatio: '16 / 9' }}
+          >
+            <div className="text-center">
+              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center mx-auto mb-3">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1" aria-hidden="true">
+                  <path d="M8 5v14l11-7z" />
+                </svg>
               </div>
-            </div>
-
-            {/* Coming soon text */}
-            <div className="page-x py-10">
-              <p className="font-semibold text-white leading-none" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
-                Better By Design
-              </p>
-              <p className="font-light text-white leading-none" style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}>
-                2026
-              </p>
-              <p className="mt-6 text-white/50" style={{ fontSize: '18px' }}>
-                Live stream starts {event.date}
+              <p className="text-white/60" style={{ fontSize: '13px' }}>
+                Live stream — {event.date}
               </p>
             </div>
-          </>
+          </div>
         )}
+
+        {/* Below video */}
+        <div className="flex-shrink-0">
+          <p className="text-white/80" style={{ fontSize: '13px' }}>{event.date}</p>
+          <p className="text-white/60" style={{ fontSize: '12px' }}>{event.location}</p>
+        </div>
       </main>
 
       {/* Footer bar */}
       <div
-        className="page-x flex items-center justify-between border-t border-white/10 text-white/30 flex-shrink-0"
+        className="page-x flex items-center justify-between border-t border-white/10 text-white/60 flex-shrink-0"
         style={{ height: '48px', fontSize: '12px' }}
       >
-        <span>{event.location}</span>
-        <Link href="/" className="hover:text-white transition-colors">
-          betterbydesign.ie
-        </Link>
+        <span>Better By Design 2026</span>
+        <div className="flex items-center gap-4">
+          {partnerLogos.map((logo) => (
+            <a
+              key={logo.src}
+              href={logo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={logo.alt}
+              className="opacity-60 hover:opacity-100 transition-opacity duration-200"
+            >
+              <Image
+                src={img(logo.src)}
+                alt={logo.alt}
+                width={80}
+                height={20}
+                className="w-auto object-contain invert"
+                style={{ maxHeight: '20px', width: 'auto' }}
+              />
+            </a>
+          ))}
+        </div>
       </div>
 
     </div>
