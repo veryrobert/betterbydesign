@@ -89,31 +89,8 @@ export default function Panellists() {
         {/* Right: cards */}
         <div className="col-span-1 md:col-span-2 lg:col-span-4 xl:col-span-3 mt-10 lg:mt-0">
 
-          {/* Mobile: horizontal scroll slider */}
-          <div
-            className="sm:hidden overflow-x-auto"
-            style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
-          >
-            <ul
-              className="flex gap-4 pb-4 list-none m-0 p-0"
-              role="list"
-              style={{ width: 'max-content' }}
-            >
-              {panellists.map((person) => (
-                <li
-                  key={person.id}
-                  className="flex-shrink-0 w-[62vw]"
-                  style={{ scrollSnapAlign: 'start' }}
-                >
-                  <PanellistCard {...person} />
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {/* Desktop: grid */}
           <ul
-            className="hidden sm:grid sm:grid-cols-3 gap-x-5 gap-y-12 list-none m-0 p-0"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-12 list-none m-0 p-0"
             role="list"
           >
             {panellists.map((person, i) => (
