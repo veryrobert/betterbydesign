@@ -1,30 +1,33 @@
-import { event } from '@/content/site'
-import Link from 'next/link'
+import type { Metadata } from 'next'
+import { event, partnerLogos } from '@/content/site'
+import Image from 'next/image'
+import LiveHeader from '@/components/LiveHeader'
+import { img } from '@/lib/img'
+
+export const metadata: Metadata = {
+  title: 'Better By Design 2026 — Live Stream',
+  description: 'Watch the Better By Design 2026 conference live. Public Service Design — The Lighthouse, Dublin, 18 June 2026.',
+  openGraph: {
+    title: 'Better By Design 2026 — Live Stream',
+    description: 'Watch the Better By Design 2026 conference live. Public Service Design — The Lighthouse, Dublin.',
+    images: [{ url: 'images/betterbydesign-sharecard.png', width: 1200, height: 630 }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Better By Design 2026 — Live Stream',
+    description: 'Watch the Better By Design 2026 conference live. Public Service Design — The Lighthouse, Dublin.',
+    images: ['images/betterbydesign-sharecard.png'],
+  },
+}
 
 export default function LivePage() {
   return (
-    <div className="h-screen bg-bbd-black flex flex-col text-white overflow-hidden">
+    <div className="min-h-screen bg-bbd-black flex flex-col text-white">
 
-      {/* Header */}
-      <header
-        className="page-x flex items-center justify-between flex-shrink-0 border-b border-white/10"
-        style={{ height: '56px' }}
-      >
-        <div>
-          <p className="font-semibold text-white leading-none" style={{ fontSize: '15px' }}>
-            Better By Design 2026
-          </p>
-          <p className="text-white/40 leading-none mt-0.5" style={{ fontSize: '11px' }}>
-            {event.date} — {event.location}
-          </p>
-        </div>
-        <Link href="/" className="text-white/40 hover:text-white transition-colors" style={{ fontSize: '13px' }}>
-          ← Back to site
-        </Link>
-      </header>
+      <LiveHeader />
 
       {/* Video area */}
-      <main id="main-content" className="flex-1 flex flex-col page-x py-5 min-h-0">
+      <main id="main-content" className="flex-1 flex flex-col page-x pt-5 pb-24 gap-10">
         {event.isLive ? (
           <div className="flex-1 relative">
             <iframe
@@ -41,30 +44,52 @@ export default function LivePage() {
             style={{ aspectRatio: '16 / 9' }}
           >
             <div className="text-center">
-              <div
-                className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center mx-auto mb-3"
-              >
+              <div className="w-14 h-14 rounded-full border border-white/20 flex items-center justify-center mx-auto mb-3">
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" className="text-white/30 ml-1" aria-hidden="true">
                   <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
-              <p className="text-white/30" style={{ fontSize: '13px' }}>
+              <p className="text-white/60" style={{ fontSize: '13px' }}>
                 Live stream — {event.date}
               </p>
             </div>
           </div>
         )}
+
+        {/* Below video */}
+        <div className="flex-shrink-0">
+          <p className="text-white/80" style={{ fontSize: '13px' }}>{event.date}</p>
+          <p className="text-white/60" style={{ fontSize: '12px' }}>{event.location}</p>
+        </div>
       </main>
 
       {/* Footer bar */}
       <div
-        className="page-x flex items-center justify-between border-t border-white/10 text-white/30 flex-shrink-0"
+        className="page-x flex items-center justify-between border-t border-white/10 text-white/60 flex-shrink-0"
         style={{ height: '48px', fontSize: '12px' }}
       >
         <span>Better By Design 2026</span>
-        <Link href="/" className="hover:text-white transition-colors">
-          betterbydesign.ie
-        </Link>
+        <div className="flex items-center gap-4">
+          {partnerLogos.map((logo) => (
+            <a
+              key={logo.src}
+              href={logo.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label={logo.alt}
+              className="opacity-60 hover:opacity-100 transition-opacity duration-200"
+            >
+              <Image
+                src={img(logo.src)}
+                alt={logo.alt}
+                width={80}
+                height={20}
+                className="w-auto object-contain invert"
+                style={{ maxHeight: '20px', width: 'auto' }}
+              />
+            </a>
+          ))}
+        </div>
       </div>
 
     </div>

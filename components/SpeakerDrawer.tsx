@@ -12,6 +12,7 @@ export default function SpeakerDrawer() {
   const router       = useRouter()
   const pathname     = usePathname()
   const panelRef     = useRef<HTMLDivElement>(null)
+  const [copied,     setCopied]     = useState(false)
 
   const panel = searchParams.get('panel')
 
@@ -36,6 +37,25 @@ export default function SpeakerDrawer() {
   const handleClose = useCallback(() => {
     router.push('/', { scroll: false })
   }, [router])
+
+  const handleShare = useCallback(async (profile: (typeof speakerProfiles)[string]) => {
+    const slug = currentSlug
+    if (!slug || !profile) return
+    const url = `${window.location.origin}/speakers/${slug}/`
+    const org = profile.organisation ? ` at ${profile.organisation}` : ''
+    const shareData = {
+      title: `${profile.name} — Better By Design 2026`,
+      text: `Meet ${profile.name}, ${profile.role}${org}. Speaking at Better By Design 2026 — 18 June 2026, The Lighthouse, Dublin.`,
+      url,
+    }
+    if (navigator.share && navigator.canShare?.(shareData)) {
+      try { await navigator.share(shareData) } catch { /* dismissed */ }
+    } else {
+      await navigator.clipboard.writeText(url)
+      setCopied(true)
+      setTimeout(() => setCopied(false), 2000)
+    }
+  }, [currentSlug])
 
 
   const handleBack = useCallback(() => {
@@ -147,15 +167,31 @@ export default function SpeakerDrawer() {
             </svg>
             Back
           </button>
-          <button
-            onClick={handleClose}
-            aria-label="Close"
-            className="text-white/40 hover:text-white transition-colors p-1 -mr-1"
-          >
-            <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
-              <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
-            </svg>
-          </button>
+          <div className="flex items-center gap-3">
+            {profile && (
+              <button
+                onClick={() => handleShare(profile)}
+                aria-label="Share speaker"
+                className="flex items-center gap-1.5 text-white/40 hover:text-white transition-colors"
+                style={{ fontSize: '12px' }}
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  <circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/>
+                  <line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/>
+                </svg>
+                {copied ? 'Copied' : 'Share'}
+              </button>
+            )}
+            <button
+              onClick={handleClose}
+              aria-label="Close"
+              className="text-white/40 hover:text-white transition-colors p-1 -mr-1"
+            >
+              <svg width="18" height="18" viewBox="0 0 18 18" fill="none" aria-hidden="true">
+                <path d="M14 4L4 14M4 4l10 10" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+              </svg>
+            </button>
+          </div>
         </div>
 
         {/* Scrollable content */}
