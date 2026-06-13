@@ -105,7 +105,7 @@ export default function Panellists() {
                   className="flex-shrink-0 w-[62vw]"
                   style={{ scrollSnapAlign: 'start' }}
                 >
-                  <PanellistCard {...person} aspectClass="aspect-[4/3]" />
+                  <PanellistCard {...person} />
                 </li>
               ))}
             </ul>
