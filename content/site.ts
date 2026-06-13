@@ -15,6 +15,11 @@ export const event = {
   ticketsUrl:
     'https://www.eventbrite.com/e/better-by-design-tickets-1988012336414?aff=oddtdtcreator',
   agendaUrl: '/?panel=agenda',
+  // ─── Live stream ───────────────────────────────────────────────
+  // Set isLive: true on the morning of the event to switch the site to live mode.
+  // Replace liveStreamUrl with the YouTube embed URL for the stream.
+  isLive: false,
+  liveStreamUrl: 'https://www.youtube.com/embed/live_stream?channel=CHANNEL_ID',
 }
 
 export const navigation = [
