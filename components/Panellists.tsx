@@ -6,19 +6,10 @@ import FadeIn from '@/components/FadeIn'
 
 function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
   const hasBio = !!speakerProfiles[slug]?.bio
-  const Wrapper = hasBio
-    ? ({ children }: { children: React.ReactNode }) => (
-        <Link href={`/?panel=speaker&id=${slug}`} scroll={false} className="group flex flex-col">
-          {children}
-        </Link>
-      )
-    : ({ children }: { children: React.ReactNode }) => (
-        <article className="flex flex-col">{children}</article>
-      )
 
   return (
-    <Wrapper>
-      {/* Portrait image — 550×800 ratio */}
+    <Link href={`/speakers/${slug}`} scroll={false} className="group flex flex-col">
+      {/* Image */}
       <div className="relative mb-4 flex-shrink-0 w-full sm:w-[70%]">
         {hasBio && (
           <div className="absolute bottom-0 right-0 z-10 w-6 h-6 bg-[#8D844E] flex items-center justify-center">
@@ -28,8 +19,8 @@ function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
           </div>
         )}
         <div
-          className="w-full overflow-hidden transition-opacity duration-200 group-hover:opacity-80"
-          style={{ aspectRatio: '550 / 800', backgroundColor: '#EEECEA' }}
+          className="w-full overflow-hidden transition-opacity duration-200 group-hover:opacity-80 aspect-[4/3] sm:aspect-[550/800]"
+          style={{ backgroundColor: '#EEECEA' }}
         >
           {image ? (
             <Image
@@ -52,7 +43,7 @@ function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
       <p className="mt-1 text-bbd-black text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
         {role}{organisation ? `, ${organisation}` : ''}
       </p>
-    </Wrapper>
+    </Link>
   )
 }
 
@@ -95,10 +86,34 @@ export default function Panellists() {
           </FadeIn>
         </div>
 
-        {/* Right: grid */}
+        {/* Right: cards */}
         <div className="col-span-1 md:col-span-2 lg:col-span-4 xl:col-span-3 mt-10 lg:mt-0">
+
+          {/* Mobile: horizontal scroll slider */}
+          <div
+            className="sm:hidden overflow-x-auto"
+            style={{ scrollSnapType: 'x mandatory', WebkitOverflowScrolling: 'touch' } as React.CSSProperties}
+          >
+            <ul
+              className="flex gap-4 pb-4 list-none m-0 p-0"
+              role="list"
+              style={{ width: 'max-content' }}
+            >
+              {panellists.map((person) => (
+                <li
+                  key={person.id}
+                  className="flex-shrink-0 w-[62vw]"
+                  style={{ scrollSnapAlign: 'start' }}
+                >
+                  <PanellistCard {...person} />
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Desktop: grid */}
           <ul
-            className="grid grid-cols-2 sm:grid-cols-3 gap-x-5 gap-y-12 list-none m-0 p-0"
+            className="hidden sm:grid sm:grid-cols-3 gap-x-5 gap-y-12 list-none m-0 p-0"
             role="list"
           >
             {panellists.map((person, i) => (
@@ -109,6 +124,7 @@ export default function Panellists() {
               </li>
             ))}
           </ul>
+
         </div>
       </div>
     </section>

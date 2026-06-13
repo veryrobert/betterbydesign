@@ -9,18 +9,9 @@ import FadeIn from '@/components/FadeIn'
 
 function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
   const hasBio = !!speakerProfiles[slug]?.bio
-  const Wrapper = hasBio
-    ? ({ children }: { children: React.ReactNode }) => (
-        <Link href={`/?panel=speaker&id=${slug}`} scroll={false} className="group flex flex-col">
-          {children}
-        </Link>
-      )
-    : ({ children }: { children: React.ReactNode }) => (
-        <article className="flex flex-col">{children}</article>
-      )
 
   return (
-    <Wrapper>
+    <Link href={`/speakers/${slug}`} scroll={false} className="group flex flex-col">
       <div className="relative w-full mb-5 flex-shrink-0">
         {hasBio && (
           <div className="absolute bottom-0 right-0 z-10 w-6 h-6 bg-[#8D844E] flex items-center justify-center">
@@ -54,7 +45,7 @@ function KeynoteCard({ slug, name, role, organisation, image }: Keynote) {
       <p className="mt-1 text-white text-pretty" style={{ fontSize: '14px', maxWidth: '90%' }}>
         {role}{organisation ? `, ${organisation}` : ''}
       </p>
-    </Wrapper>
+    </Link>
   )
 }
 

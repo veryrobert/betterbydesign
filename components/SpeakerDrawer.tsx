@@ -1,7 +1,7 @@
 'use client'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
-import { useSearchParams, useRouter } from 'next/navigation'
+import { useSearchParams, useRouter, usePathname } from 'next/navigation'
 import Image from 'next/image'
 import { speakerProfiles } from '@/content/site'
 import { img } from '@/lib/img'
@@ -10,16 +10,19 @@ import { lockScroll, unlockScroll } from '@/lib/scroll-lock'
 export default function SpeakerDrawer() {
   const searchParams = useSearchParams()
   const router       = useRouter()
+  const pathname     = usePathname()
   const panelRef     = useRef<HTMLDivElement>(null)
 
   const panel = searchParams.get('panel')
 
-  // Two ways a speaker can be active:
-  //   1. /?panel=speaker&id=slug        — standalone (opened from main page)
-  //   2. /?panel=agenda&speaker=slug    — side-by-side alongside the agenda
+  // Three ways a speaker can be active:
+  //   1. /speakers/slug                 — clean URL (canonical)
+  //   2. /?panel=speaker&id=slug        — legacy standalone
+  //   3. /?panel=agenda&speaker=slug    — side-by-side alongside the agenda
+  const pathSlug      = pathname?.match(/^\/speakers\/([^/]+)/)?.[1] ?? null
   const standaloneId  = panel === 'speaker' ? searchParams.get('id') : null
   const sideBySideId  = panel === 'agenda'  ? searchParams.get('speaker') : null
-  const speakerId     = standaloneId ?? sideBySideId
+  const speakerId     = pathSlug ?? standaloneId ?? sideBySideId
   const isSideBySide  = !!sideBySideId
 
   const isActive = !!speakerId
@@ -33,6 +36,7 @@ export default function SpeakerDrawer() {
   const handleClose = useCallback(() => {
     router.push('/', { scroll: false })
   }, [router])
+
 
   const handleBack = useCallback(() => {
     router.back()

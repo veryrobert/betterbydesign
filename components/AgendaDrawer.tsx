@@ -108,7 +108,7 @@ function AgendaRow({ item }: { item: AgendaItem }) {
             Moderator:{' '}
             {speakerProfiles[item.moderator]?.bio ? (
               <Link
-                href={`?panel=speaker&id=${item.moderator}`}
+                href={`/speakers/${item.moderator}`}
                 scroll={false}
                 className="text-white/80 hover:text-white transition-colors"
               >

@@ -495,23 +495,27 @@ export const panellistsIntro =
   'Better By Design 2026 brings together practitioners, researchers and leaders from across the Irish public service and beyond — all working to make public services better through design.'
 
 export const panellists: Panellist[] = [
-  { id: 1,  slug: 'charlotte-barker',     name: 'Charlotte Barker',      role: 'Chief Executive',                                               organisation: 'The Institute of Designers in Ireland',        image: '/images/charlotte-barker.webp' },
-  { id: 2,  slug: 'tania-banotti',        name: 'Tania Banotti',          role: 'Director',                                                      organisation: 'Creative Ireland',                             image: '/images/tania.webp' },
-  { id: 3,  slug: 'aidan-oboyle',         name: 'Aidan O\'Boyle',         role: 'Public Service Transformation Design Lead for Life Events',      organisation: 'DPER',                                         image: '/images/aidan.webp' },
+  // Welcome
+  { id: 1,  slug: 'charlotte-barker',     name: 'Charlotte Barker',      role: 'Chief Executive',                                               organisation: 'The Institute of Designers in Ireland',             image: '/images/charlotte-barker.webp' },
+  { id: 2,  slug: 'tania-banotti',        name: 'Tania Banotti',          role: 'Director',                                                      organisation: 'Creative Ireland',                                  image: '/images/tania.webp' },
+  // Panel 1 — Designing Digital
+  { id: 3,  slug: 'aidan-oboyle',         name: 'Aidan O\'Boyle',         role: 'Public Service Transformation Design Lead for Life Events',      organisation: 'DPER',                                              image: '/images/aidan.webp' },
   { id: 4,  slug: 'alison-boland',        name: 'Alison Boland',          role: 'Head of Digital Transformation',                                organisation: 'Department of Housing, Local Government and Heritage', image: '/images/alison.webp' },
-  { id: 5,  slug: 'kevin-horan',          name: 'Kevin Horan',            role: 'Head of Design',                                                organisation: 'HSE Communications and Public Affairs',        image: '/images/kevin.webp' },
-  { id: 6,  slug: 'dan-eames',            name: 'Dan Eames',              role: 'Senior Digital Design Advisor',                                 organisation: 'CEUD and NDA',                                 image: '/images/dan-eames.webp' },
-  { id: 7,  slug: 'marianne-cassidy',     name: 'Marianne Cassidy',       role: 'Assistant Secretary',                                           organisation: 'DPER',                                         image: '/images/marianne.webp' },
-  { id: 8,  slug: 'shawna-coxon',         name: 'Shawna Coxon',           role: 'Deputy Commissioner, Policing Operations',                      organisation: 'An Garda Síochána',                            image: '/images/shawna.webp' },
-  { id: 9,  slug: 'dr-rachael-singleton', name: 'Dr Rachael Singleton',   role: 'Behavioural Scientist Lecturer',                                organisation: 'Ulster University',                            image: '/images/rachel.webp' },
-  { id: 10, slug: 'damian-cranney',       name: 'Damian Cranney',         role: 'Chief Executive',                                               organisation: 'Big Motive',                                   image: '/images/daimen.webp' },
-  { id: 11, slug: 'tomas-o-ruairc',       name: 'Tomás Ó Ruairc',         role: 'Assistant Secretary',                                           organisation: 'Department of Education and Youth',            image: '/images/tomas.webp' },
-  { id: 12, slug: 'brenda-murphy',        name: 'Brenda Murphy',          role: 'City Innovation Broker',                                        organisation: 'Belfast City Council',                         image: '/images/brenda.webp' },
-  { id: 13, slug: 'jared-gormly',        name: 'Jared Gormly',          role: 'Head of HSE Spark Innovation Programme',                        organisation: 'HSE Spark',                                    image: '/images/jared-gormly.webp' },
-  { id: 14, slug: 'lynne-whelan',         name: 'Lynne Whelan',           role: 'Senior Change Management Professional',                         organisation: 'SETU',                                         image: '/images/lynne-whelan.webp' },
-  { id: 15, slug: 'malcolm-beattie',      name: 'Malcolm Beattie',        role: 'Former Head of Northern Ireland Innovation Lab',               organisation: '',                                             image: '/images/malcolm-beattie.webp' },
-  { id: 16, slug: 'dr-caoimhe-mc-mahon',  name: 'Dr Caoimhe Mc Mahon',    role: 'Programme Lead, MA and Professional Diploma in Service Design', organisation: 'National College of Art and Design',           image: '/images/caoimhe-mc-mahon.webp' },
-  { id: 17, slug: 'john-mckeon',          name: 'John McKeon',            role: 'Secretary General',                                             organisation: 'Department of Social Protection',              image: '/images/john-mckeon.webp' },
+  { id: 5,  slug: 'dan-eames',            name: 'Dan Eames',              role: 'Senior Digital Design Advisor',                                 organisation: 'CEUD and NDA',                                      image: '/images/dan-eames.webp' },
+  { id: 6,  slug: 'kevin-horan',          name: 'Kevin Horan',            role: 'Head of Design',                                                organisation: 'HSE Communications and Public Affairs',             image: '/images/kevin.webp' },
+  { id: 7,  slug: 'john-mckeon',          name: 'John McKeon',            role: 'Secretary General',                                             organisation: 'Department of Social Protection',                   image: '/images/john-mckeon.webp' },
+  // Panel 2 — Designing How We Work
+  { id: 8,  slug: 'marianne-cassidy',     name: 'Marianne Cassidy',       role: 'Assistant Secretary',                                           organisation: 'DPER',                                              image: '/images/marianne.webp' },
+  { id: 9,  slug: 'dr-caoimhe-mc-mahon',  name: 'Dr Caoimhe Mc Mahon',    role: 'Programme Lead, MA and Professional Diploma in Service Design', organisation: 'National College of Art and Design',                image: '/images/caoimhe-mc-mahon.webp' },
+  { id: 10, slug: 'malcolm-beattie',      name: 'Malcolm Beattie',        role: 'Former Head of Northern Ireland Innovation Lab',                organisation: '',                                                  image: '/images/malcolm-beattie.webp' },
+  { id: 11, slug: 'jared-gormly',         name: 'Jared Gormly',           role: 'Head of HSE Spark Innovation Programme',                        organisation: 'HSE Spark',                                         image: '/images/jared-gormly.webp' },
+  { id: 12, slug: 'lynne-whelan',         name: 'Lynne Whelan',           role: 'Senior Change Management Professional',                         organisation: 'SETU',                                              image: '/images/lynne-whelan.webp' },
+  { id: 13, slug: 'brenda-murphy',        name: 'Brenda Murphy',          role: 'City Innovation Broker',                                        organisation: 'Belfast City Council',                              image: '/images/brenda.webp' },
+  // Panel 3 — Designing with Evidence
+  { id: 14, slug: 'tomas-o-ruairc',       name: 'Tomás Ó Ruairc',         role: 'Assistant Secretary',                                           organisation: 'Department of Education and Youth',                 image: '/images/tomas.webp' },
+  { id: 15, slug: 'shawna-coxon',         name: 'Shawna Coxon',           role: 'Deputy Commissioner, Policing Operations',                      organisation: 'An Garda Síochána',                                 image: '/images/shawna.webp' },
+  { id: 16, slug: 'dr-rachael-singleton', name: 'Dr Rachael Singleton',   role: 'Behavioural Scientist Lecturer',                                organisation: 'Ulster University',                                 image: '/images/rachel.webp' },
+  { id: 17, slug: 'damian-cranney',       name: 'Damian Cranney',         role: 'Chief Executive',                                               organisation: 'Big Motive',                                        image: '/images/daimen.webp' },
 ]
 
 // ─── Footer ───────────────────────────────────────────────────────────────────

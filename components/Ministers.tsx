@@ -11,7 +11,7 @@ function MinisterCard({ slug, name, role, organisation, image }: Minister) {
   const hasBio = !!speakerProfiles[slug]
   const Wrapper = hasBio
     ? ({ children }: { children: React.ReactNode }) => (
-        <Link href={`/?panel=speaker&id=${slug}`} scroll={false} className="group flex flex-col">
+        <Link href={`/speakers/${slug}`} scroll={false} className="group flex flex-col">
           {children}
         </Link>
       )

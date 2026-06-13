@@ -1,6 +1,9 @@
 import type { Metadata } from 'next'
 import { IBM_Plex_Sans } from 'next/font/google'
 import './globals.css'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
+import Drawers from '@/components/Drawers'
 
 const ibmPlexSans = IBM_Plex_Sans({
   subsets: ['latin'],
@@ -61,7 +64,10 @@ export default function RootLayout({
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
+        <Header />
         {children}
+        <Footer />
+        <Drawers />
       </body>
     </html>
   )
