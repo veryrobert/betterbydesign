@@ -4,7 +4,7 @@ import { panellists, panellistsIntro, speakerProfiles, type Panellist } from '@/
 import { img } from '@/lib/img'
 import FadeIn from '@/components/FadeIn'
 
-function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
+function PanellistCard({ slug, name, role, organisation, image, aspectClass = 'aspect-[11/16]' }: Panellist & { aspectClass?: string }) {
   const hasBio = !!speakerProfiles[slug]?.bio
 
   return (
@@ -19,7 +19,7 @@ function PanellistCard({ slug, name, role, organisation, image }: Panellist) {
           </div>
         )}
         <div
-          className="w-full overflow-hidden transition-opacity duration-200 group-hover:opacity-80 aspect-[4/3] sm:aspect-[550/800]"
+          className={`w-full overflow-hidden transition-opacity duration-200 group-hover:opacity-80 ${aspectClass}`}
           style={{ backgroundColor: '#EEECEA' }}
         >
           {image ? (
@@ -105,7 +105,7 @@ export default function Panellists() {
                   className="flex-shrink-0 w-[62vw]"
                   style={{ scrollSnapAlign: 'start' }}
                 >
-                  <PanellistCard {...person} />
+                  <PanellistCard {...person} aspectClass="aspect-[4/3]" />
                 </li>
               ))}
             </ul>
