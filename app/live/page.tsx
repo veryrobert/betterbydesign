@@ -18,7 +18,7 @@ export default function LivePage() {
             />
           </div>
         ) : (
-          <div className="flex-1 flex flex-col items-center justify-center text-center px-6 py-24">
+          <div className="flex-1 flex flex-col justify-end page-x py-12">
             <p
               className="font-semibold text-white leading-none"
               style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
@@ -26,17 +26,17 @@ export default function LivePage() {
               Better By Design
             </p>
             <p
-              className="font-light text-white leading-none mt-1"
+              className="font-light text-white leading-none"
               style={{ fontSize: 'clamp(2rem, 5vw, 4rem)' }}
             >
               2026
             </p>
-            <p className="mt-8 text-white/50" style={{ fontSize: '18px' }}>
+            <p className="mt-6 text-white/50" style={{ fontSize: '18px' }}>
               Live stream starts {event.date}
             </p>
             <Link
               href="/"
-              className="mt-10 text-white/40 hover:text-white transition-colors underline decoration-1 underline-offset-[0.15em]"
+              className="mt-6 text-white/40 hover:text-white transition-colors underline decoration-1 underline-offset-[0.15em] w-fit"
               style={{ fontSize: '14px' }}
             >
               Back to site
@@ -45,16 +45,16 @@ export default function LivePage() {
         )}
       </div>
 
-      {/* Footer */}
-      <footer className="page-x py-6 border-t border-white/10 flex-shrink-0" style={{ fontSize: '12px' }}>
-        <p className="text-white/30">{event.date} — {event.location}</p>
-        <Link
-          href="/"
-          className="mt-1 block text-white/30 hover:text-white transition-colors"
-        >
+      {/* Footer bar */}
+      <div
+        className="page-x flex items-center justify-between border-t border-white/10 text-white/30 flex-shrink-0"
+        style={{ height: '48px', fontSize: '12px' }}
+      >
+        <span>{event.date} — {event.location}</span>
+        <Link href="/" className="hover:text-white transition-colors">
           betterbydesign.ie
         </Link>
-      </footer>
+      </div>
 
     </main>
   )
