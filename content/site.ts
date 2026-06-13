@@ -535,17 +535,17 @@ export const footerDescription = {
 export const social = [
   {
     platform: 'Instagram' as const,
-    href: '#',
+    href: 'https://www.instagram.com/govie',
     label: 'Better By Design on Instagram',
   },
   {
     platform: 'LinkedIn' as const,
-    href: '#',
+    href: 'https://www.linkedin.com/company/dper/posts/?feedView=all',
     label: 'Better By Design on LinkedIn',
   },
   {
     platform: 'YouTube' as const,
-    href: '#',
+    href: 'https://www.youtube.com/merrionstreet',
     label: 'Better By Design on YouTube',
   },
 ]
